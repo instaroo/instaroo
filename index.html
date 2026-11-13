@@ -12,18 +12,13 @@
 a{color:inherit;text-decoration:none}.wrap{max-width:1120px;margin:auto;padding:0 22px}
 header{border-bottom:1px solid #ffffff12;position:sticky;top:0;background:#0b1020eF;backdrop-filter:blur(16px);z-index:5}
 .nav{height:76px;display:flex;align-items:center;justify-content:space-between;gap:18px}
-.logo{font-size:25px;font-weight:900;letter-spacing:-1px}.logo span{color:var(--pink)}
+.logo{font-size:38px;font-weight:900;letter-spacing:-1px}.logo span{color:var(--pink)}
 .navsmall{color:var(--muted);font-size:13px}.hero{padding:68px 0 38px;text-align:center}
 .pill{display:inline-flex;gap:8px;align-items:center;border:1px solid #ff4d8d55;color:#ff9abb;background:#ff4d8d12;border-radius:30px;padding:7px 14px;font-size:12px;font-weight:700}
 h1{font-size:clamp(34px,6vw,58px);line-height:1.35;margin:18px 0 10px;font-weight:900;letter-spacing:-1.5px}
 .grad{background:linear-gradient(90deg,#ff70a6,#ffbd72);-webkit-background-clip:text;background-clip:text;color:transparent}
 .hero p{color:var(--muted);font-size:16px;margin:0 auto;max-width:580px;line-height:2}
-.stats{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:28px}
-.stat{background:#ffffff08;border:1px solid #ffffff12;border-radius:14px;padding:10px 17px;color:#cbd5e1;font-size:12px}
 .toolbar{display:flex;align-items:center;justify-content:space-between;gap:14px;margin:30px 0 18px;flex-wrap:wrap}
-.tabs{display:flex;gap:8px;flex-wrap:wrap}
-.tab{border:1px solid var(--line);background:var(--panel);color:#c2cde0;padding:10px 15px;border-radius:12px;font:600 13px Vazirmatn;cursor:pointer;transition:.2s}
-.tab.active{background:linear-gradient(135deg,#ff4d8d,#ff8b64);border-color:transparent;color:white;box-shadow:0 7px 24px #ff4d8d30}
 .search{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:11px 14px;color:white;font:13px Vazirmatn;min-width:220px;outline:none}
 .section-head{display:flex;align-items:end;justify-content:space-between;margin:24px 0 16px;gap:12px}
 .section-head h2{margin:0;font-size:20px}.section-head small{color:var(--muted)}
@@ -41,7 +36,7 @@ h1{font-size:clamp(34px,6vw,58px);line-height:1.35;margin:18px 0 10px;font-weigh
 .empty{grid-column:1/-1;text-align:center;border:1px dashed #3a4761;border-radius:18px;padding:35px 15px;color:var(--muted);line-height:2}
 footer{margin-top:60px;border-top:1px solid #ffffff12;padding:24px 0 36px;color:var(--muted);font-size:12px;text-align:center}
 .note{margin-top:22px;color:#8492aa;font-size:11px;text-align:center;line-height:2}
-@media(max-width:800px){.grid{grid-template-columns:repeat(2,1fr)}}@media(max-width:560px){.hero{padding:48px 0 24px}.grid{grid-template-columns:1fr}.thumb{height:190px}.navsmall{display:none}.toolbar{align-items:stretch}.search{width:100%}.tabs{display:grid;grid-template-columns:1fr 1fr}.tab:last-child{grid-column:1/-1}}
+@media(max-width:800px){.grid{grid-template-columns:repeat(2,1fr)}}@media(max-width:560px){.hero{padding:48px 0 24px}.grid{grid-template-columns:1fr}.thumb{height:190px}.navsmall{display:none}.toolbar{align-items:stretch}.search{width:100%}}
 </style>
 <style>
 .reels-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px;margin-top:24px}
@@ -53,6 +48,26 @@ footer{margin-top:60px;border-top:1px solid #ffffff12;padding:24px 0 36px;color:
 .reel-card a{color:#ff0050;font-size:13px;text-decoration:none}
 </style>
 </head>
+<body>
+<header><div class="wrap nav"><a class="logo" href="#">INSTA<span>RO</span></a><div class="navsmall">گلچین روزانه ریلزهای فارسی</div></div></header>
+<main class="wrap">
+<section class="hero">
+<div class="pill">✦ انتخاب‌شده برای تو، نه الگوریتم</div>
+<h1>امروز چی رو <span class="grad">از دست دادی؟</span></h1>
+<p>مهم‌ترین و جذاب‌ترین ریلزهای فارسی اینستاگرام؛ یک‌جا، هر روز، بدون اسکرول بی‌پایان.</p>
+</section>
+<section>
+<div class="toolbar">
+<input class="search" id="search" placeholder="جست‌وجو در عنوان یا موضوع..." aria-label="جست‌وجو">
+</div>
+<div class="section-head"><h2 id="heading">🔥 ریلزهای پربازدید</h2><small id="count">منتخب روز</small></div>
+<div class="grid" id="grid">
+<div id="reels-container" class="reels-grid"></div>
+</div>
+<p class="note">این نسخه، پیش‌نمایش اولیه سایت است. لینک‌ها و آمار واقعی پس از شروع گردآوری روزانه محتوا اضافه می‌شوند.</p>
+</section>
+</main>
+<footer><div class="wrap">INSTARO © 2026 — امروز چی رو از دست دادی؟</div></footer>
 <script>
 const CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRd5580Rh_4Zmc-rSH5cx5BOIN9MPaNp71lN_09PjV4YLylGpEC1vhBpgtc7y3a5BSsxj-2lO2oDVM1/pub?gid=0&single=true&output=csv';
 
@@ -76,39 +91,6 @@ async function loadReels() {
     </div>`).join('');
 }
 loadReels();
-</script>
-<body>
-<header><div class="wrap nav"><a class="logo" href="#">INSTA<span>RO</span></a><div class="navsmall">گلچین روزانه ریلزهای فارسی</div></div></header>
-<main class="wrap">
-<section class="hero">
-<div class="pill">✦ انتخاب‌شده برای تو، نه الگوریتم</div>
-<h1>امروز چی رو <span class="grad">از دست دادی؟</span></h1>
-<p>مهم‌ترین و جذاب‌ترین ریلزهای فارسی اینستاگرام؛ یک‌جا، هر روز، بدون اسکرول بی‌پایان.</p>
-<div class="stats"><div class="stat">🎯 گلچین روزانه</div><div class="stat">⏱️ صرفه‌جویی در وقت</div><div class="stat">🇮🇷 محتوای فارسی</div></div>
-</section>
-<section>
-<div class="toolbar">
-<div class="tabs" role="tablist">
-<button class="tab active" data-filter="views">🔥 بیشترین ویو</button>
-<button class="tab" data-filter="comments">💬 بیشترین کامنت</button>
-<button class="tab" data-filter="fresh">🚀 تازه وایرال‌شده‌ها</button>
-</div>
-<input class="search" id="search" placeholder="جست‌وجو در عنوان یا موضوع..." aria-label="جست‌وجو">
-</div>
-<div class="section-head"><h2 id="heading">🔥 ریلزهای پربازدید</h2><small id="count">منتخب روز</small></div>
-<div class="grid" id="grid">
-<div id="reels-container" class="reels-grid"></div>
-</div>
-<p class="note">این نسخه، پیش‌نمایش اولیه سایت است. لینک‌ها و آمار واقعی پس از شروع گردآوری روزانه محتوا اضافه می‌شوند.</p>
-</section>
-</main>
-<footer><div class="wrap">INSTARO © 2026 — امروز چی رو از دست دادی؟</div></footer>
-<script>
-const labels={views:"🔥 ریلزهای پربازدید",comments:"💬 ریلزهای پرکامنت",fresh:"🚀 تازه وایرال‌شده‌ها"};
-let current="views";
-document.querySelectorAll(".tab").forEach(b=>b.addEventListener("click",()=>{document.querySelectorAll(".tab").forEach(x=>x.classList.remove("active"));b.classList.add("active");current=b.dataset.filter;document.getElementById("heading").textContent=labels[current];render();}));
-document.getElementById("search").addEventListener("input",render);
-function render(){const q=document.getElementById("search").value.trim();document.getElementById("grid").innerHTML=`<div class="empty">${q?"موردی با این عبارت پیدا نشد.":"هنوز محتوایی برای این بخش ثبت نشده است."}<br>وقتی اولین ریلزهای منتخب اضافه شوند، اینجا نمایش داده می‌شوند.</div>`;document.getElementById("count").textContent="۰ ریلز";}
 </script>
 </body>
 </html>
