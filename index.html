@@ -30,18 +30,18 @@ footer{margin-top:60px;border-top:1px solid #ffffff12;padding:24px 0 36px;color:
   display: flex;
   gap: 18px;
   overflow-x: auto;
-  padding-bottom: 15px; /* فضا برای اسکرول بار */
-  scroll-snap-type: x mandatory; /* اسکرول نرم و جذاب */
-  -webkit-overflow-scrolling: touch; /* اسکرول نرم در iOS */
+  padding-bottom: 15px; 
+  scroll-snap-type: x mandatory; 
+  -webkit-overflow-scrolling: touch;
 }
-/* مخفی کردن نوار اسکرول پیش‌فرض برای زیبایی بیشتر */
 .reels-row::-webkit-scrollbar { height: 6px; }
 .reels-row::-webkit-scrollbar-track { background: transparent; }
 .reels-row::-webkit-scrollbar-thumb { background: var(--line); border-radius: 10px; }
 .reels-row::-webkit-scrollbar-thumb:hover { background: var(--pink); }
 
 .reel-card {
-  flex: 0 0 240px; /* عرض ثابت کارت‌ها در دسکتاپ */
+  /* عرض ۲۲.۵ درصد یعنی ۴ کارت کامل + یکم از پنجمی */
+  flex: 0 0 calc(22.5% - 14px); 
   background: linear-gradient(160deg,#172239,#10182a);
   border: 1px solid var(--line);
   border-radius: 18px;
@@ -59,9 +59,9 @@ footer{margin-top:60px;border-top:1px solid #ffffff12;padding:24px 0 36px;color:
 .reel-card a { color: #ff8db4; font-size: 13px; font-weight: 700; display: inline-block; transition: .2s; }
 .reel-card a:hover { color: #ff4d8d; }
 
-/* تنظیمات عرض کارت در موبایل */
+/* تنظیمات موبایل: ۲ کارت کامل + یکم از سومی */
 @media(max-width:600px){
-  .reel-card { flex: 0 0 190px; padding: 10px; }
+  .reel-card { flex: 0 0 calc(44% - 9px); padding: 10px; }
   .reel-card h3 { font-size: 13px; }
   .reel-card p { font-size: 11px; }
   .reel-card .badge { top: 16px; right: 16px; font-size: 9px; }
@@ -109,7 +109,7 @@ async function loadReels() {
       return obj;
     });
 
-    data.reverse(); // جدیدترین‌ها اول
+    // ترتیب دقیقاً به همون ترتیب گوگل شیت (از بالا به پایین)
 
     // گروه‌بندی داده‌ها بر اساس ستون group
     const groupedData = {};
