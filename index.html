@@ -28,11 +28,13 @@ footer{margin-top:60px;border-top:1px solid #ffffff12;padding:24px 0 36px;color:
 .row-container { margin-bottom: 30px; }
 .reels-row {
   display: flex;
-  gap: 18px;
+  gap: 16px;
   overflow-x: auto;
   padding-bottom: 15px; 
   scroll-snap-type: x mandatory; 
   -webkit-overflow-scrolling: touch;
+  /* پدینگ سمت چپ برای اینکه کارت بعدی از لبه نچسبه */
+  padding-left: 10px; 
 }
 .reels-row::-webkit-scrollbar { height: 6px; }
 .reels-row::-webkit-scrollbar-track { background: transparent; }
@@ -40,8 +42,8 @@ footer{margin-top:60px;border-top:1px solid #ffffff12;padding:24px 0 36px;color:
 .reels-row::-webkit-scrollbar-thumb:hover { background: var(--pink); }
 
 .reel-card {
-  /* عرض ۲۲.۵ درصد یعنی ۴ کارت کامل + یکم از پنجمی */
-  flex: 0 0 calc(22.5% - 14px); 
+  /* کارت‌ها بزرگ هستن، ولی با margin-left یه کم از لبه بیرون میزنن */
+  flex: 0 0 calc(25% - 15px); 
   background: linear-gradient(160deg,#172239,#10182a);
   border: 1px solid var(--line);
   border-radius: 18px;
@@ -59,9 +61,10 @@ footer{margin-top:60px;border-top:1px solid #ffffff12;padding:24px 0 36px;color:
 .reel-card a { color: #ff8db4; font-size: 13px; font-weight: 700; display: inline-block; transition: .2s; }
 .reel-card a:hover { color: #ff4d8d; }
 
-/* تنظیمات موبایل: ۲ کارت کامل + یکم از سومی */
+/* تنظیمات موبایل: ۲ کارت بزرگ + نشون دادن لبه کارت سوم */
 @media(max-width:600px){
-  .reel-card { flex: 0 0 calc(44% - 9px); padding: 10px; }
+  .reels-row { gap: 12px; padding-left: 12px; }
+  .reel-card { flex: 0 0 calc(50% - 16px); padding: 10px; }
   .reel-card h3 { font-size: 13px; }
   .reel-card p { font-size: 11px; }
   .reel-card .badge { top: 16px; right: 16px; font-size: 9px; }
