@@ -67,11 +67,25 @@ async function loadReels() {
     const text = await res.text();
     const rows = text.trim().split('\n').map(r => r.split(','));
     const headers = rows[0].map(x => x.trim());
-    const data = rows.slice(1).map(r => {
+    
+    let data = rows.slice(1).map(r => {
       const obj = {};
       headers.forEach((k, i) => obj[k] = (r[i] || '').trim());
       return obj;
     });
+
+    // مرتب‌سازی بر اساس گروه (group) تا کارت‌های یک گروه کنار هم بیایند
+    data.sort((a, b) => {
+      const groupA = a.group || a.category || '';
+      const groupB = b.group || b.category || '';
+      if (groupA < groupB) return -1;
+      if (groupA > groupB) return 1;
+      return 0;
+    });
+
+    // برعکس کردن ترتیب برای اینکه جدیدترین‌ها اول بیان
+    data.reverse();
+
     document.getElementById('reels-container').innerHTML = data.map(r => `
       <div class="reel-card">
         ${r.cover ? `<img src="${r.cover}" alt="${r.title}" loading="lazy">` : ''}
