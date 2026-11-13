@@ -24,17 +24,49 @@ footer{margin-top:60px;border-top:1px solid #ffffff12;padding:24px 0 36px;color:
 @media(max-width:800px){.grid{grid-template-columns:repeat(2,1fr)}}@media(max-width:560px){.hero{padding:48px 0 24px}.grid{grid-template-columns:1fr}.navsmall{display:none}.logo{font-size:40px}.hero p{font-size:18px}}
 </style>
 <style>
-.reels-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:18px;margin-top:26px}
-.reel-card{background:linear-gradient(160deg,#172239,#10182a);border:1px solid var(--line);border-radius:18px;padding:14px;position:relative;overflow:hidden;transition:transform .25s,border-color .25s,box-shadow .25s}
-.reel-card:hover{transform:translateY(-4px);border-color:#ff4d8d77;box-shadow:0 14px 40px -12px #ff4d8d33}
-.reel-card img{width:100%;aspect-ratio:9/16;object-fit:cover;border-radius:12px;margin-bottom:10px;background:#2a2440;display:block}
-.reel-card .badge{position:absolute;top:22px;right:22px;background:linear-gradient(135deg,#ff4d8d,#ff8b64);color:#fff;font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px;z-index:2;box-shadow:0 4px 14px #ff4d8d55}
-.reel-card h3{font-size:15px;margin:6px 0;color:#fff;line-height:1.8}
-.reel-card p{font-size:13px;color:var(--muted);margin:4px 0 12px;line-height:1.8}
-.reel-card a{color:#ff8db4;font-size:13px;font-weight:700;display:inline-block;transition:.2s}
-.reel-card a:hover{color:#ff4d8d}
-/* این کلاس باعث میشه بقیه کارت‌ها برن خط بعد */
-.force-new-row { grid-column: 1 / -1; height: 0; margin: 0; padding: 0; border: none; }
+/* استایل ردیف‌های افقی (اسکرول‌دار) */
+.row-container { margin-bottom: 30px; }
+.reels-row {
+  display: flex;
+  gap: 18px;
+  overflow-x: auto;
+  padding-bottom: 15px; /* فضا برای اسکرول بار */
+  scroll-snap-type: x mandatory; /* اسکرول نرم و جذاب */
+  -webkit-overflow-scrolling: touch; /* اسکرول نرم در iOS */
+}
+/* مخفی کردن نوار اسکرول پیش‌فرض برای زیبایی بیشتر */
+.reels-row::-webkit-scrollbar { height: 6px; }
+.reels-row::-webkit-scrollbar-track { background: transparent; }
+.reels-row::-webkit-scrollbar-thumb { background: var(--line); border-radius: 10px; }
+.reels-row::-webkit-scrollbar-thumb:hover { background: var(--pink); }
+
+.reel-card {
+  flex: 0 0 240px; /* عرض ثابت کارت‌ها در دسکتاپ */
+  background: linear-gradient(160deg,#172239,#10182a);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 14px;
+  position: relative;
+  overflow: hidden;
+  transition: transform .25s, border-color .25s, box-shadow .25s;
+  scroll-snap-align: start;
+}
+.reel-card:hover { transform: translateY(-4px); border-color: #ff4d8d77; box-shadow: 0 14px 40px -12px #ff4d8d33; }
+.reel-card img { width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px; margin-bottom: 10px; background: #2a2440; display: block; }
+.reel-card .badge { position: absolute; top: 22px; right: 22px; background: linear-gradient(135deg,#ff4d8d,#ff8b64); color: #fff; font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 20px; z-index: 2; box-shadow: 0 4px 14px #ff4d8d55; }
+.reel-card h3 { font-size: 15px; margin: 6px 0; color: #fff; line-height: 1.8; }
+.reel-card p { font-size: 13px; color: var(--muted); margin: 4px 0 12px; line-height: 1.8; }
+.reel-card a { color: #ff8db4; font-size: 13px; font-weight: 700; display: inline-block; transition: .2s; }
+.reel-card a:hover { color: #ff4d8d; }
+
+/* تنظیمات عرض کارت در موبایل */
+@media(max-width:600px){
+  .reel-card { flex: 0 0 190px; padding: 10px; }
+  .reel-card h3 { font-size: 13px; }
+  .reel-card p { font-size: 11px; }
+  .reel-card .badge { top: 16px; right: 16px; font-size: 9px; }
+  .reel-card a { font-size: 11px; }
+}
 </style>
 </head>
 <body>
@@ -51,10 +83,11 @@ footer{margin-top:60px;border-top:1px solid #ffffff12;padding:24px 0 36px;color:
     <p>یک‌جا، هر روز، بدون اسکرول بی‌پایان.</p>
   </section>
 
-  <section>
-    <div class="reels-grid" id="reels-container"></div>
-    <p class="note">این نسخه، پیش‌نمایش اولیه سایت است. لینک‌ها و آمار واقعی پس از شروع گردآوری روزانه محتوا اضافه می‌شوند.</p>
+  <section id="main-content">
+    <!-- محتوا توسط جاوااسکریپت اینجا ساخته می‌شود -->
   </section>
+  
+  <p class="note">این نسخه، پیش‌نمایش اولیه سایت است. لینک‌ها و آمار واقعی پس از شروع گردآوری روزانه محتوا اضافه می‌شوند.</p>
 </main>
 <footer>
   <div class="wrap">INSTARO © 2026 — امروز چی رو از دست دادی؟</div>
@@ -78,33 +111,40 @@ async function loadReels() {
 
     data.reverse(); // جدیدترین‌ها اول
 
-    let html = '';
-    let lastGroup = null;
-
-    data.forEach(r => {
-      // اگر گروه عوض شد، برو ردیف بعد (بدون نوشتن تیتر)
-      if (r.group !== lastGroup) {
-        if (lastGroup !== null) {
-           html += `<div class="force-new-row"></div>`;
-        }
-        lastGroup = r.group;
-      }
-
-      html += `
-        <div class="reel-card">
-          ${r.cover ? `<img src="${r.cover}" alt="${r.title}" loading="lazy">` : ''}
-          ${r.category ? `<span class="badge">${r.category}</span>` : ''}
-          <h3>${r.title}</h3>
-          <p>${r.description}</p>
-          <a href="${r.link}" target="_blank">مشاهده در اینستاگرام</a>
-        </div>
-      `;
+    // گروه‌بندی داده‌ها بر اساس ستون group
+    const groupedData = {};
+    data.forEach(item => {
+      const grp = item.group || 'سایر';
+      if (!groupedData[grp]) groupedData[grp] = [];
+      groupedData[grp].push(item);
     });
 
-    document.getElementById('reels-container').innerHTML = html;
+    let htmlContent = '';
+    
+    // برای هر گروه، یک ردیف افقی جداگانه می‌سازیم
+    for (const [groupName, items] of Object.entries(groupedData)) {
+      htmlContent += `
+        <div class="row-container">
+          <div class="reels-row">
+            ${items.map(r => `
+              <div class="reel-card">
+                ${r.cover ? `<img src="${r.cover}" alt="${r.title}" loading="lazy">` : ''}
+                ${r.category ? `<span class="badge">${r.category}</span>` : ''}
+                <h3>${r.title}</h3>
+                <p>${r.description}</p>
+                <a href="${r.link}" target="_blank">مشاهده در اینستاگرام</a>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      `;
+    }
+
+    document.getElementById('main-content').innerHTML = htmlContent;
 
   } catch (e) {
     console.error(e);
+    document.getElementById('main-content').innerHTML = '<p style="text-align:center;color:red;">خطا در بارگذاری محتوا.</p>';
   }
 }
 loadReels();
