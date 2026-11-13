@@ -8,17 +8,12 @@
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800;900&display=swap');
 :root{--bg:#0b1020;--panel:#121a2d;--panel2:#182238;--line:#26334c;--text:#f5f7fb;--muted:#9aa8bf;--pink:#ff4d8d;--orange:#ff9d4d;--cyan:#5dd6d0}
-*{box-sizing:border-box}
-body{margin:0;background:radial-gradient(ellipse at 85% -10%,#312044 0,transparent 36%),var(--bg);color:var(--text);font-family:Vazirmatn,Tahoma,sans-serif}
-a{color:inherit;text-decoration:none}
-.wrap{max-width:1120px;margin:auto;padding:0 22px}
-header{border-bottom:1px solid #ffffff12;position:sticky;top:0;background:#0b1020ef;backdrop-filter:blur(16px);z-index:5}
-.nav{height:84px;display:flex;align-items:center;justify-content:space-between;gap:18px}
-.logo{font-size:52px;font-weight:900;letter-spacing:-2px;line-height:1;display:flex;align-items:center;gap:10px}
-.logo span{color:var(--pink)}
-.logo svg{width:34px;height:34px;flex-shrink:0}
-.navsmall{color:var(--muted);font-size:14px}
-.hero{padding:68px 0 38px;text-align:center}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 85% -10%,#312044 0,transparent 36%),var(--bg);color:var(--text);font-family:Vazirmatn,Tahoma,sans-serif}
+a{color:inherit;text-decoration:none}.wrap{max-width:1120px;margin:auto;padding:0 22px}
+header{border-bottom:1px solid #ffffff12;position:sticky;top:0;background:#0b1020eF;backdrop-filter:blur(16px);z-index:5}
+.nav{height:76px;display:flex;align-items:center;justify-content:space-between;gap:18px}
+.logo{font-size:52px;font-weight:900;letter-spacing:-2px;line-height:1}.logo span{color:var(--pink)}
+.navsmall{color:var(--muted);font-size:14px}.hero{padding:68px 0 38px;text-align:center}
 .pill{display:inline-flex;gap:8px;align-items:center;border:1px solid #ff4d8d55;color:#ff9abb;background:#ff4d8d12;border-radius:30px;padding:7px 14px;font-size:12px;font-weight:700}
 h1{font-size:clamp(34px,6vw,58px);line-height:1.35;margin:18px 0 10px;font-weight:900;letter-spacing:-1.5px}
 .grad{background:linear-gradient(90deg,#ff70a6,#ffbd72);-webkit-background-clip:text;background-clip:text;color:transparent}
@@ -26,8 +21,7 @@ h1{font-size:clamp(34px,6vw,58px);line-height:1.35;margin:18px 0 10px;font-weigh
 .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
 footer{margin-top:60px;border-top:1px solid #ffffff12;padding:24px 0 36px;color:var(--muted);font-size:12px;text-align:center}
 .note{margin-top:22px;color:#8492aa;font-size:11px;text-align:center;line-height:2}
-@media(max-width:800px){.grid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:560px){.hero{padding:48px 0 24px}.grid{grid-template-columns:1fr}.navsmall{display:none}.logo{font-size:40px}.logo svg{width:26px;height:26px}.hero p{font-size:18px}}
+@media(max-width:800px){.grid{grid-template-columns:repeat(2,1fr)}}@media(max-width:560px){.hero{padding:48px 0 24px}.grid{grid-template-columns:1fr}.navsmall{display:none}.logo{font-size:40px}.hero p{font-size:18px}}
 </style>
 <style>
 .reels-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:18px;margin-top:26px}
@@ -44,14 +38,7 @@ footer{margin-top:60px;border-top:1px solid #ffffff12;padding:24px 0 36px;color:
 <body>
 <header>
   <div class="wrap nav">
-    <a class="logo" href="#">
-      <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8">
-        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
-        <circle cx="12" cy="12" r="4.5"/>
-        <circle cx="17.5" cy="6.5" r="1.2" fill="#fff" stroke="none"/>
-      </svg>
-      <span style="color:#fff">INSTA</span><span>RO</span>
-    </a>
+    <a class="logo" href="#">INSTA<span>RO</span></a>
     <div class="navsmall">گلچین روزانه اینستاگرام</div>
   </div>
 </header>
