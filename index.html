@@ -33,6 +33,8 @@ footer{margin-top:60px;border-top:1px solid #ffffff12;padding:24px 0 36px;color:
 .reel-card p{font-size:13px;color:var(--muted);margin:4px 0 12px;line-height:1.8}
 .reel-card a{color:#ff8db4;font-size:13px;font-weight:700;display:inline-block;transition:.2s}
 .reel-card a:hover{color:#ff4d8d}
+/* این کلاس باعث میشه بقیه کارت‌ها برن خط بعد */
+.force-new-row { grid-column: 1 / -1; height: 0; margin: 0; padding: 0; border: none; }
 </style>
 </head>
 <body>
@@ -74,17 +76,33 @@ async function loadReels() {
       return obj;
     });
 
-    // ترتیب: از آخر به اول (جدیدترین‌ها اول بیان)
-    data.reverse();
+    data.reverse(); // جدیدترین‌ها اول
 
-    document.getElementById('reels-container').innerHTML = data.map(r => `
-      <div class="reel-card">
-        ${r.cover ? `<img src="${r.cover}" alt="${r.title}" loading="lazy">` : ''}
-        ${r.category ? `<span class="badge">${r.category}</span>` : ''}
-        <h3>${r.title}</h3>
-        <p>${r.description}</p>
-        <a href="${r.link}" target="_blank">مشاهده در اینستاگرام</a>
-      </div>`).join('');
+    let html = '';
+    let lastGroup = null;
+
+    data.forEach(r => {
+      // اگر گروه عوض شد، برو ردیف بعد (بدون نوشتن تیتر)
+      if (r.group !== lastGroup) {
+        if (lastGroup !== null) {
+           html += `<div class="force-new-row"></div>`;
+        }
+        lastGroup = r.group;
+      }
+
+      html += `
+        <div class="reel-card">
+          ${r.cover ? `<img src="${r.cover}" alt="${r.title}" loading="lazy">` : ''}
+          ${r.category ? `<span class="badge">${r.category}</span>` : ''}
+          <h3>${r.title}</h3>
+          <p>${r.description}</p>
+          <a href="${r.link}" target="_blank">مشاهده در اینستاگرام</a>
+        </div>
+      `;
+    });
+
+    document.getElementById('reels-container').innerHTML = html;
+
   } catch (e) {
     console.error(e);
   }
