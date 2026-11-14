@@ -17,10 +17,8 @@ header{border-bottom:1px solid #ffffff12;position:sticky;top:0;background:#0b102
 .logo{font-size:52px;font-weight:900;letter-spacing:-2px;line-height:1}.logo span{color:var(--pink)}
 .navsmall{color:var(--muted);font-size:14px}.hero{padding:68px 0 38px;text-align:center}
 .pill{display:inline-flex;gap:8px;align-items:center;border:1px solid #ff4d8d55;color:#ff9abb;background:#ff4d8d12;border-radius:30px;padding:7px 14px;font-size:12px;font-weight:700}
-/* 👇 فاصله تیتر کم شد */
 h1{font-size:clamp(34px,6vw,58px);line-height:1.25;margin:12px 0 6px;font-weight:900;letter-spacing:-1.5px}
 .grad{background:linear-gradient(90deg,#ff70a6,#ffbd72);-webkit-background-clip:text;background-clip:text;color:transparent}
-/* 👇 فاصله و ارتفاع خط جمله زیرش کم شد */
 .hero p{color:var(--muted);font-size:22px;margin:0 auto;max-width:580px;line-height:1.7}
 footer{margin-top:60px;border-top:1px solid #ffffff12;padding:24px 0 36px;color:var(--muted);font-size:12px;text-align:center}
 .note{margin-top:22px;color:#8492aa;font-size:11px;text-align:center;line-height:2}
@@ -28,7 +26,28 @@ footer{margin-top:60px;border-top:1px solid #ffffff12;padding:24px 0 36px;color:
 </style>
 <style>
 /* استایل کشوی افقی */
-.row-container { margin-bottom: 30px; }
+.row-container { margin-bottom: 40px; }
+
+/* 👇 استایل تیتر هر گروه 👇 */
+.group-title {
+  font-size: 22px;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.group-title::before {
+  content: "";
+  display: block;
+  width: 6px;
+  height: 24px;
+  background: linear-gradient(to bottom, #ff4d8d, #ff8b64);
+  border-radius: 4px;
+}
+/* 👆 پایان استایل تیتر 👆 */
+
 .reels-row {
   display: flex;
   gap: 12px; 
@@ -121,6 +140,9 @@ footer{margin-top:60px;border-top:1px solid #ffffff12;padding:24px 0 36px;color:
   .reel-card p { font-size: 11px; }
   .reel-card .badge { top: 8px; right: 8px; font-size: 9px; }
   
+  .group-title { font-size: 18px; margin-bottom: 12px; }
+  .group-title::before { width: 4px; height: 18px; }
+
   .play-btn { width: 32px; height: 32px; bottom: 20%; }
   .play-btn svg { width: 18px; height: 18px; }
 }
@@ -167,6 +189,7 @@ async function loadReels() {
       return obj;
     });
 
+    // 👇 این بخش رو تغییر دادم که ترتیب گروه‌ها دقیق حفظ بشه
     const groupedData = {};
     data.forEach(item => {
       const grp = item.group || 'سایر';
@@ -175,9 +198,14 @@ async function loadReels() {
     });
 
     let htmlContent = '';
+    
+    // ساخت تیتر و ردیف برای هر گروه
     for (const [groupName, items] of Object.entries(groupedData)) {
       htmlContent += `
         <div class="row-container">
+          <!-- 👇 تیتر گروه اینجا چاپ میشه -->
+          <h2 class="group-title">${groupName}</h2>
+          
           <div class="reels-row">
             ${items.map(r => `
               <a href="${r.link}" target="_blank" class="reel-card">
