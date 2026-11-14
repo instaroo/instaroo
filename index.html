@@ -10,7 +10,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800;900&display=swap');
 :root{--bg:#0b1020;--panel:#121a2d;--panel2:#182238;--line:#26334c;--text:#f5f7fb;--muted:#9aa8bf;--pink:#ff4d8d;--orange:#ff9d4d;--cyan:#5dd6d0}
 *{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 85% -10%,#312044 0,transparent 36%),var(--bg);color:var(--text);font-family:Vazirmatn,Tahoma,sans-serif}
-a{color:inherit;text-decoration:none}.wrap{max-width:1120px;margin:auto;padding:0 22px}
+a{color:inherit;text-decoration:none}
+/* 👇 فاصله کلی صفحه رو کم کردم تا کارت اول به لبه بچسبه */
+.wrap{max-width:1120px;margin:auto;padding:0 16px}
 header{border-bottom:1px solid #ffffff12;position:sticky;top:0;background:#0b1020eF;backdrop-filter:blur(16px);z-index:5}
 .nav{height:76px;display:flex;align-items:center;justify-content:space-between;gap:18px}
 .logo{font-size:52px;font-weight:900;letter-spacing:-2px;line-height:1}.logo span{color:var(--pink)}
@@ -28,7 +30,7 @@ footer{margin-top:60px;border-top:1px solid #ffffff12;padding:24px 0 36px;color:
 .row-container { margin-bottom: 30px; }
 .reels-row {
   display: flex;
-  gap: 10px; 
+  gap: 12px; /* فاصله بین کارت‌ها */
   overflow-x: auto;
   padding-bottom: 15px; 
   scroll-snap-type: x mandatory; 
@@ -42,7 +44,8 @@ footer{margin-top:60px;border-top:1px solid #ffffff12;padding:24px 0 36px;color:
 /* کل کارت لینک است */
 .reel-card {
   display: block; 
-  flex: 0 0 calc(25% - 8px); 
+  /* 👇 ۲۴ درصد یعنی ۴ کارت کامل + کمی از پنجمی بیرون می‌زنه */
+  flex: 0 0 calc(24% - 9px); 
   background: linear-gradient(160deg,#172239,#10182a);
   border: 1px solid var(--line);
   border-radius: 18px;
@@ -89,30 +92,37 @@ footer{margin-top:60px;border-top:1px solid #ffffff12;padding:24px 0 36px;color:
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #fff; 
-  font-size: 20px;
-  padding-left: 4px;
   backdrop-filter: blur(2px);
   transition: background .2s, transform .2s;
+}
+.play-btn svg {
+  width: 22px;
+  height: 22px;
+  fill: #fff; 
+  margin-right: 3px; 
 }
 .reel-card:hover .play-btn {
   background: var(--pink); 
   transform: translateX(-50%) scale(1.1);
 }
+.reel-card:hover .play-btn svg {
+  fill: #fff;
+}
 
 /* متن‌ها */
 .reel-card h3 { font-size: 15px; margin: 6px 0; color: #fff; line-height: 1.8; }
-/* 👇 اینجا رنگ رو دقیقاً صورتی کردم */
 .reel-card p { font-size: 13px; color: #ff8db4; margin: 4px 0 0 0; line-height: 1.8; }
 
 /* تنظیمات موبایل */
 @media(max-width:600px){
   .reels-row { gap: 10px; } 
-  .reel-card { flex: 0 0 calc(50% - 5px); padding: 10px; } 
+  /* 👇 ۴۸ درصد یعنی ۲ کارت کامل + ۹۰ درصد سومی پیدا میشه */
+  .reel-card { flex: 0 0 calc(48% - 5px); padding: 10px; } 
   .reel-card h3 { font-size: 13px; }
   .reel-card p { font-size: 11px; }
   .reel-card .badge { top: 8px; right: 8px; font-size: 9px; }
-  .play-btn { width: 42px; height: 42px; font-size: 16px; bottom: 20%; }
+  .play-btn { width: 42px; height: 42px; bottom: 20%; }
+  .play-btn svg { width: 18px; height: 18px; }
 }
 </style>
 </head>
@@ -173,7 +183,13 @@ async function loadReels() {
               <a href="${r.link}" target="_blank" class="reel-card">
                 <div class="thumb-wrapper">
                   ${r.cover ? `<img src="${r.cover}" alt="${r.title}" loading="lazy">` : ''}
-                  <div class="play-btn">▶</div>
+                  
+                  <div class="play-btn">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M8 5v14l11-7z"/>
+                    </svg>
+                  </div>
+
                   ${r.category ? `<span class="badge">${r.category}</span>` : ''}
                 </div>
                 <h3>${r.title}</h3>
