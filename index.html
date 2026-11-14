@@ -39,28 +39,43 @@ footer{margin-top:60px;border-top:1px solid #ffffff12;padding:24px 0 36px;color:
 .reels-row::-webkit-scrollbar-thumb { background: var(--line); border-radius: 10px; }
 .reels-row::-webkit-scrollbar-thumb:hover { background: var(--pink); }
 
+/* کل کارت لینک است */
 .reel-card {
+  display: block; /* برای اینکه لینک مثل div رفتار کنه */
   flex: 0 0 calc(25% - 8px);
   background: linear-gradient(160deg,#172239,#10182a);
   border: 1px solid var(--line);
   border-radius: 18px;
   padding: 14px;
   position: relative;
-  overflow: hidden;
   transition: transform .25s, border-color .25s, box-shadow .25s;
   scroll-snap-align: start;
 }
 .reel-card:hover { transform: translateY(-4px); border-color: #ff4d8d77; box-shadow: 0 14px 40px -12px #ff4d8d33; }
 
-/* باکس عکس و دکمه پلی */
+/* بخش عکس */
 .thumb-wrapper {
   position: relative;
-  display: block;
   margin-bottom: 10px;
 }
 .reel-card img { width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px; background: #2a2440; display: block; }
 
-/* دکمه پلی وسط عکس */
+/* برچسب دسته‌بندی */
+.reel-card .badge { 
+  position: absolute; 
+  top: 12px; 
+  right: 12px; 
+  background: linear-gradient(135deg,#ff4d8d,#ff8b64); 
+  color: #fff; 
+  font-size: 11px; 
+  font-weight: 700; 
+  padding: 3px 10px; 
+  border-radius: 20px; 
+  z-index: 2; 
+  box-shadow: 0 4px 14px #ff4d8d55; 
+}
+
+/* دکمه پلی */
 .play-btn {
   position: absolute;
   top: 50%; left: 50%;
@@ -75,7 +90,7 @@ footer{margin-top:60px;border-top:1px solid #ffffff12;padding:24px 0 36px;color:
   justify-content: center;
   color: white;
   font-size: 18px;
-  padding-left: 4px; /* برای اینکه مثلث دقیقا وسط باشه */
+  padding-left: 4px; 
   transition: background .2s, transform .2s;
 }
 .reel-card:hover .play-btn {
@@ -94,6 +109,7 @@ footer{margin-top:60px;border-top:1px solid #ffffff12;padding:24px 0 36px;color:
   .reel-card { flex: 0 0 calc(50% - 5px); padding: 10px; }
   .reel-card h3 { font-size: 13px; }
   .reel-card p { font-size: 11px; }
+  .reel-card .badge { top: 8px; right: 8px; font-size: 9px; }
   .play-btn { width: 36px; height: 36px; font-size: 14px; }
 }
 </style>
@@ -152,7 +168,6 @@ async function loadReels() {
         <div class="row-container">
           <div class="reels-row">
             ${items.map(r => `
-              <!-- کل کارت لینک شده به اینستاگرام -->
               <a href="${r.link}" target="_blank" class="reel-card">
                 <div class="thumb-wrapper">
                   ${r.cover ? `<img src="${r.cover}" alt="${r.title}" loading="lazy">` : ''}
