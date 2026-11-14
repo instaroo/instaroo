@@ -5,7 +5,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#111827">
-<title>اینستارو | امروز چی رو از دست دادی؟</title>
+
+<!-- 👇 عنوان سایت (برای گوگل) تغییر کرد -->
+<title>اینستارو | ترندهای امروز اینستاگرام بدون اسکرول</title>
+
+<!-- 👇 توضیحات سایت (برای گوگل) تغییر کرد -->
+<meta name="description" content="ترندها و کلیپ‌های وایرال امروز اینستاگرام در دسته‌بندی‌های فان، جنجالی و فندق. ببین امروز چی رو از دست دادی!">
+
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800;900&display=swap');
 :root{--bg:#0b1020;--panel:#121a2d;--panel2:#182238;--line:#26334c;--text:#f5f7fb;--muted:#9aa8bf;--pink:#ff4d8d;--orange:#ff9d4d;--cyan:#5dd6d0}
@@ -14,7 +20,12 @@ a{color:inherit;text-decoration:none}
 .wrap{max-width:1120px;margin:auto;padding:0 16px}
 header{border-bottom:1px solid #ffffff12;position:sticky;top:0;background:#0b1020eF;backdrop-filter:blur(16px);z-index:5}
 .nav{height:60px;display:flex;align-items:center;justify-content:space-between;gap:18px}
-.logo{font-size:40px;font-weight:900;letter-spacing:-2px;line-height:1}.logo span{color:var(--pink)}
+
+/* 👇 استایل لوگو و متصل کردنش به کلمه */
+.logo{display:flex;align-items:center;gap:8px;font-size:40px;font-weight:900;letter-spacing:-2px;line-height:1}
+.logo svg { width: 34px; height: 34px; margin-bottom: 4px; }
+.logo span{color:var(--pink)}
+
 .navsmall{color:var(--muted);font-size:13px}
 .hero{padding:24px 0 16px;text-align:center}
 .pill{display:inline-flex;gap:8px;align-items:center;border:1px solid #ff4d8d55;color:#ff9abb;background:#ff4d8d12;border-radius:30px;padding:5px 12px;font-size:11px;font-weight:700}
@@ -23,10 +34,10 @@ h1{font-size:clamp(28px,5vw,46px);line-height:1.2;margin:10px 0 4px;font-weight:
 .hero p{color:var(--muted);font-size:18px;margin:0 auto;max-width:580px;line-height:1.5}
 footer{margin-top:40px;border-top:1px solid #ffffff12;padding:20px 0 30px;color:var(--muted);font-size:12px;text-align:center}
 .note{margin-top:16px;color:#8492aa;font-size:11px;text-align:center;line-height:2}
-@media(max-width:560px){.nav{height:52px}.logo{font-size:32px}.navsmall{display:none}.hero{padding:18px 0 12px}h1{font-size:30px;margin:8px 0 2px;}.hero p{font-size:15px}}
+@media(max-width:560px){.nav{height:52px}.logo{font-size:32px;gap:6px}.logo svg{width:26px;height:26px;}.navsmall{display:none}.hero{padding:18px 0 12px}h1{font-size:30px;margin:8px 0 2px;}.hero p{font-size:15px}}
 </style>
 <style>
-/* 👇 فاصله ردیف‌ها از ۱۲ به ۱۴ تغییر کرد */
+/* 👇 فاصله ردیف‌ها */
 .row-container { margin-bottom: 14px; }
 
 .group-title {
@@ -128,7 +139,21 @@ footer{margin-top:40px;border-top:1px solid #ffffff12;padding:20px 0 30px;color:
 <body>
 <header>
   <div class="wrap nav">
-    <a class="logo" href="#">INSTA<span>RO</span></a>
+    <a class="logo" href="#">
+      <!-- 👇 کد SVG برای لوگو (یک حلقه با نقطه، شبیه اینستاگرام ولی مینیمال) -->
+      <svg viewBox="0 0 24 24" fill="none" stroke="url(#gradLogo)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <defs>
+          <linearGradient id="gradLogo" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#ff70a6" />
+            <stop offset="100%" stop-color="#ffbd72" />
+          </linearGradient>
+        </defs>
+        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+      </svg>
+      INSTA<span>RO</span>
+    </a>
     <div class="navsmall">گلچین روزانه اینستاگرام</div>
   </div>
 </header>
