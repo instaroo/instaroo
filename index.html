@@ -30,16 +30,9 @@ footer{margin-top:60px;border-top:1px solid #ffffff12;padding:24px 0 36px;color:
   display: flex;
   gap: 10px; 
   overflow-x: auto;
-  overflow-y: hidden;
+  padding-bottom: 15px; 
   scroll-snap-type: x mandatory; 
   -webkit-overflow-scrolling: touch;
-  
-  /* 👇 تنظیمات مهم برای تلگرام */
-  touch-action: pan-x; 
-  overscroll-behavior-x: contain;
-  
-  /* اسکرول بار برای زیبایی */
-  padding-bottom: 10px;
 }
 .reels-row::-webkit-scrollbar { height: 6px; }
 .reels-row::-webkit-scrollbar-track { background: transparent; }
@@ -47,7 +40,7 @@ footer{margin-top:60px;border-top:1px solid #ffffff12;padding:24px 0 36px;color:
 .reels-row::-webkit-scrollbar-thumb:hover { background: var(--pink); }
 
 .reel-card {
-  flex: 0 0 calc(25% - 8px); /* ۴ کارت در لپ‌تاپ */
+  flex: 0 0 calc(25% - 8px);
   background: linear-gradient(160deg,#172239,#10182a);
   border: 1px solid var(--line);
   border-radius: 18px;
@@ -58,21 +51,50 @@ footer{margin-top:60px;border-top:1px solid #ffffff12;padding:24px 0 36px;color:
   scroll-snap-align: start;
 }
 .reel-card:hover { transform: translateY(-4px); border-color: #ff4d8d77; box-shadow: 0 14px 40px -12px #ff4d8d33; }
-.reel-card img { width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px; margin-bottom: 10px; background: #2a2440; display: block; }
-.reel-card .badge { position: absolute; top: 22px; right: 22px; background: linear-gradient(135deg,#ff4d8d,#ff8b64); color: #fff; font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 20px; z-index: 2; box-shadow: 0 4px 14px #ff4d8d55; }
-.reel-card h3 { font-size: 15px; margin: 6px 0; color: #fff; line-height: 1.8; }
-.reel-card p { font-size: 13px; color: var(--muted); margin: 4px 0 12px; line-height: 1.8; }
-.reel-card a { color: #ff8db4; font-size: 13px; font-weight: 700; display: inline-block; transition: .2s; }
-.reel-card a:hover { color: #ff4d8d; }
 
-/* تنظیمات موبایل: ۲ کارت در گوشی */
+/* باکس عکس و دکمه پلی */
+.thumb-wrapper {
+  position: relative;
+  display: block;
+  margin-bottom: 10px;
+}
+.reel-card img { width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px; background: #2a2440; display: block; }
+
+/* دکمه پلی وسط عکس */
+.play-btn {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 46px; height: 46px;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 18px;
+  padding-left: 4px; /* برای اینکه مثلث دقیقا وسط باشه */
+  transition: background .2s, transform .2s;
+}
+.reel-card:hover .play-btn {
+  background: rgba(255, 77, 141, 0.8);
+  transform: translate(-50%, -50%) scale(1.1);
+  border-color: var(--pink);
+}
+
+/* متن‌ها */
+.reel-card h3 { font-size: 15px; margin: 6px 0; color: #fff; line-height: 1.8; }
+.reel-card p { font-size: 13px; color: var(--muted); margin: 4px 0 0 0; line-height: 1.8; }
+
+/* تنظیمات موبایل */
 @media(max-width:600px){
   .reels-row { gap: 10px; } 
   .reel-card { flex: 0 0 calc(50% - 5px); padding: 10px; }
   .reel-card h3 { font-size: 13px; }
   .reel-card p { font-size: 11px; }
-  .reel-card .badge { top: 16px; right: 16px; font-size: 9px; }
-  .reel-card a { font-size: 11px; }
+  .play-btn { width: 36px; height: 36px; font-size: 14px; }
 }
 </style>
 </head>
@@ -130,13 +152,16 @@ async function loadReels() {
         <div class="row-container">
           <div class="reels-row">
             ${items.map(r => `
-              <div class="reel-card">
-                ${r.cover ? `<img src="${r.cover}" alt="${r.title}" loading="lazy">` : ''}
-                ${r.category ? `<span class="badge">${r.category}</span>` : ''}
+              <!-- کل کارت لینک شده به اینستاگرام -->
+              <a href="${r.link}" target="_blank" class="reel-card">
+                <div class="thumb-wrapper">
+                  ${r.cover ? `<img src="${r.cover}" alt="${r.title}" loading="lazy">` : ''}
+                  <div class="play-btn">▶</div>
+                  ${r.category ? `<span class="badge">${r.category}</span>` : ''}
+                </div>
                 <h3>${r.title}</h3>
                 <p>${r.description}</p>
-                <a href="${r.link}" target="_blank">مشاهده در اینستاگرام</a>
-              </div>
+              </a>
             `).join('')}
           </div>
         </div>
