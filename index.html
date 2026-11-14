@@ -5,13 +5,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#111827">
-
-<!-- 👇 عنوان سایت (برای گوگل) تغییر کرد -->
 <title>اینستارو | ترندهای امروز اینستاگرام بدون اسکرول</title>
-
-<!-- 👇 توضیحات سایت (برای گوگل) تغییر کرد -->
 <meta name="description" content="ترندها و کلیپ‌های وایرال امروز اینستاگرام در دسته‌بندی‌های فان، جنجالی و فندق. ببین امروز چی رو از دست دادی!">
-
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800;900&display=swap');
 :root{--bg:#0b1020;--panel:#121a2d;--panel2:#182238;--line:#26334c;--text:#f5f7fb;--muted:#9aa8bf;--pink:#ff4d8d;--orange:#ff9d4d;--cyan:#5dd6d0}
@@ -21,9 +16,9 @@ a{color:inherit;text-decoration:none}
 header{border-bottom:1px solid #ffffff12;position:sticky;top:0;background:#0b1020eF;backdrop-filter:blur(16px);z-index:5}
 .nav{height:60px;display:flex;align-items:center;justify-content:space-between;gap:18px}
 
-/* 👇 استایل لوگو و متصل کردنش به کلمه */
+/* 👇 چیدمان لوگو: متن سفید، سپس قرمز، سپس آیکون */
 .logo{display:flex;align-items:center;gap:8px;font-size:40px;font-weight:900;letter-spacing:-2px;line-height:1}
-.logo svg { width: 34px; height: 34px; margin-bottom: 4px; }
+.logo svg { width: 32px; height: 32px; margin-bottom: 2px; }
 .logo span{color:var(--pink)}
 
 .navsmall{color:var(--muted);font-size:13px}
@@ -37,89 +32,25 @@ footer{margin-top:40px;border-top:1px solid #ffffff12;padding:20px 0 30px;color:
 @media(max-width:560px){.nav{height:52px}.logo{font-size:32px;gap:6px}.logo svg{width:26px;height:26px;}.navsmall{display:none}.hero{padding:18px 0 12px}h1{font-size:30px;margin:8px 0 2px;}.hero p{font-size:15px}}
 </style>
 <style>
-/* 👇 فاصله ردیف‌ها */
 .row-container { margin-bottom: 14px; }
-
-.group-title {
-  font-size: 18px;
-  font-weight: 800;
-  color: #fff;
-  margin-bottom: 10px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-.group-title::before {
-  content: "";
-  display: block;
-  width: 5px;
-  height: 18px;
-  background: linear-gradient(to bottom, #ff4d8d, #ff8b64);
-  border-radius: 4px;
-}
-.reels-row {
-  display: flex;
-  gap: 10px; 
-  overflow-x: auto;
-  padding-bottom: 10px; 
-  scroll-snap-type: x mandatory; 
-  -webkit-overflow-scrolling: touch;
-}
+.group-title { font-size: 18px; font-weight: 800; color: #fff; margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
+.group-title::before { content: ""; display: block; width: 5px; height: 18px; background: linear-gradient(to bottom, #ff4d8d, #ff8b64); border-radius: 4px; }
+.reels-row { display: flex; gap: 10px; overflow-x: auto; padding-bottom: 10px; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; }
 .reels-row::-webkit-scrollbar { height: 4px; }
 .reels-row::-webkit-scrollbar-track { background: transparent; }
 .reels-row::-webkit-scrollbar-thumb { background: var(--line); border-radius: 10px; }
 .reels-row::-webkit-scrollbar-thumb:hover { background: var(--pink); }
-
-.reel-card {
-  display: block; 
-  flex: 0 0 calc(24% - 8px); 
-  background: linear-gradient(160deg,#172239,#10182a);
-  border: 1px solid var(--line);
-  border-radius: 14px; 
-  padding: 10px; 
-  position: relative;
-  transition: transform .25s, border-color .25s, box-shadow .25s;
-  scroll-snap-align: start;
-}
+.reel-card { display: block; flex: 0 0 calc(24% - 8px); background: linear-gradient(160deg,#172239,#10182a); border: 1px solid var(--line); border-radius: 14px; padding: 10px; position: relative; transition: transform .25s, border-color .25s, box-shadow .25s; scroll-snap-align: start; }
 .reel-card:hover { transform: translateY(-4px); border-color: #ff4d8d77; box-shadow: 0 14px 40px -12px #ff4d8d33; }
 .thumb-wrapper { position: relative; margin-bottom: 8px; }
 .reel-card img { width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 10px; background: #2a2440; display: block; }
-.reel-card .badge { 
-  position: absolute; 
-  top: 8px; 
-  right: 8px; 
-  background: linear-gradient(135deg,#ff4d8d,#ff8b64); 
-  color: #fff; 
-  font-size: 10px; 
-  font-weight: 700; 
-  padding: 2px 8px; 
-  border-radius: 20px; 
-  z-index: 2; 
-  box-shadow: 0 4px 14px #ff4d8d55; 
-}
-.play-btn {
-  position: absolute;
-  bottom: 25%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 32px; 
-  height: 32px;
-  background: rgba(0, 0, 0, 0.5); 
-  border: 2px solid rgba(255, 255, 255, 0.9); 
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  backdrop-filter: blur(2px);
-  transition: background .2s, transform .2s;
-}
+.reel-card .badge { position: absolute; top: 8px; right: 8px; background: linear-gradient(135deg,#ff4d8d,#ff8b64); color: #fff; font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 20px; z-index: 2; box-shadow: 0 4px 14px #ff4d8d55; }
+.play-btn { position: absolute; bottom: 25%; left: 50%; transform: translateX(-50%); width: 32px; height: 32px; background: rgba(0, 0, 0, 0.5); border: 2px solid rgba(255, 255, 255, 0.9); border-radius: 50%; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(2px); transition: background .2s, transform .2s; }
 .play-btn svg { width: 18px; height: 18px; fill: #fff; margin-right: 2px; }
 .reel-card:hover .play-btn { background: var(--pink); transform: translateX(-50%) scale(1.1); }
 .reel-card:hover .play-btn svg { fill: #fff; }
-
 .reel-card h3 { font-size: 13px; margin: 4px 0; color: #fff; line-height: 1.6; }
 .reel-card p { font-size: 11px; color: #ff8db4; margin: 2px 0 0 0; line-height: 1.5; }
-
 @media(max-width:600px){
   .reels-row { gap: 8px; padding-bottom: 8px; } 
   .reel-card { flex: 0 0 calc(45% - 5px); padding: 8px; border-radius: 12px; } 
@@ -127,10 +58,8 @@ footer{margin-top:40px;border-top:1px solid #ffffff12;padding:20px 0 30px;color:
   .reel-card p { font-size: 10px; }
   .reel-card .badge { top: 6px; right: 6px; font-size: 8px; padding: 2px 6px; }
   .reel-card .thumb-wrapper { margin-bottom: 6px; }
-  
   .group-title { font-size: 16px; margin-bottom: 8px; }
   .group-title::before { width: 4px; height: 16px; }
-
   .play-btn { width: 28px; height: 28px; bottom: 15%; }
   .play-btn svg { width: 16px; height: 16px; }
 }
@@ -140,19 +69,21 @@ footer{margin-top:40px;border-top:1px solid #ffffff12;padding:20px 0 30px;color:
 <header>
   <div class="wrap nav">
     <a class="logo" href="#">
-      <!-- 👇 کد SVG برای لوگو (یک حلقه با نقطه، شبیه اینستاگرام ولی مینیمال) -->
-      <svg viewBox="0 0 24 24" fill="none" stroke="url(#gradLogo)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <!-- 👇 چیدمان جدید: متن سفید، سپس صورتی، سپس آیکون الماس با حرف R -->
+      <span style="color:#fff">INSTA</span>
+      <span>RO</span>
+      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <defs>
           <linearGradient id="gradLogo" x1="0%" y1="0%" x2="100%" y2="100%">
             <stop offset="0%" stop-color="#ff70a6" />
             <stop offset="100%" stop-color="#ffbd72" />
           </linearGradient>
         </defs>
-        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+        <!-- الماس -->
+        <path d="M12 2L22 12L12 22L2 12L12 2Z" fill="none" stroke="url(#gradLogo)" stroke-width="2" stroke-linejoin="round"/>
+        <!-- حرف R داخل الماس -->
+        <path d="M10 16V8h2.5a2.5 2.5 0 0 1 0 5H10m2 0l1.5 3" stroke="url(#gradLogo)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
-      INSTA<span>RO</span>
     </a>
     <div class="navsmall">گلچین روزانه اینستاگرام</div>
   </div>
