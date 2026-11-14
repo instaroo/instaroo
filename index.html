@@ -76,13 +76,13 @@ footer{margin-top:60px;border-top:1px solid #ffffff12;padding:24px 0 36px;color:
   box-shadow: 0 4px 14px #ff4d8d55; 
 }
 
-/* 👇 دکمه پلی */
+/* 👇 دکمه پلی: دایره کوچیک‌تر */
 .play-btn {
   position: absolute;
   bottom: 25%;
   left: 50%;
   transform: translateX(-50%);
-  width: 36px; /* دایره ۳۰٪ کوچیک‌تر */
+  width: 36px; 
   height: 36px;
   background: rgba(0, 0, 0, 0.5); 
   border: 2px solid rgba(255, 255, 255, 0.9); 
@@ -93,9 +93,9 @@ footer{margin-top:60px;border-top:1px solid #ffffff12;padding:24px 0 36px;color:
   backdrop-filter: blur(2px);
   transition: background .2s, transform .2s;
 }
-/* 👇 فلش سفید (داخل دایره) */
+/* 👇 فلش سفید بزرگ‌تر */
 .play-btn svg {
-  width: 22px; /* سایز فلش */
+  width: 22px; 
   height: 22px;
   fill: #fff; 
   margin-right: 3px; 
@@ -151,7 +151,8 @@ footer{margin-top:60px;border-top:1px solid #ffffff12;padding:24px 0 36px;color:
 </footer>
 
 <script>
-const CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRd5580Rh_4Zmc-rSH5cx5BOIN9MPaNp71lN_09PjV4YLylGpEC1vhBpgtc7y3a5BSsxj-2lO2dVM1/pub?gid=0&single=true&output=csv';
+// 👇 اینجا لینک رو درست کردم (به M آخر برگشت)
+const CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRd5580Rh_4Zmc-rSH5cx5BOIN9MPaNp71lN_09PjV4YLylGpEC1vhBpgtc7y3a5BSsxj-2lO2oDVM1/pub?gid=0&single=true&output=csv';
 
 async function loadReels() {
   try {
