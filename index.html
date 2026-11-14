@@ -11,7 +11,6 @@
 :root{--bg:#0b1020;--panel:#121a2d;--panel2:#182238;--line:#26334c;--text:#f5f7fb;--muted:#9aa8bf;--pink:#ff4d8d;--orange:#ff9d4d;--cyan:#5dd6d0}
 *{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 85% -10%,#312044 0,transparent 36%),var(--bg);color:var(--text);font-family:Vazirmatn,Tahoma,sans-serif}
 a{color:inherit;text-decoration:none}
-/* 👇 فاصله کلی صفحه رو کم کردم تا کارت اول به لبه بچسبه */
 .wrap{max-width:1120px;margin:auto;padding:0 16px}
 header{border-bottom:1px solid #ffffff12;position:sticky;top:0;background:#0b1020eF;backdrop-filter:blur(16px);z-index:5}
 .nav{height:76px;display:flex;align-items:center;justify-content:space-between;gap:18px}
@@ -30,7 +29,7 @@ footer{margin-top:60px;border-top:1px solid #ffffff12;padding:24px 0 36px;color:
 .row-container { margin-bottom: 30px; }
 .reels-row {
   display: flex;
-  gap: 12px; /* فاصله بین کارت‌ها */
+  gap: 12px; 
   overflow-x: auto;
   padding-bottom: 15px; 
   scroll-snap-type: x mandatory; 
@@ -44,7 +43,6 @@ footer{margin-top:60px;border-top:1px solid #ffffff12;padding:24px 0 36px;color:
 /* کل کارت لینک است */
 .reel-card {
   display: block; 
-  /* 👇 ۲۴ درصد یعنی ۴ کارت کامل + کمی از پنجمی بیرون می‌زنه */
   flex: 0 0 calc(24% - 9px); 
   background: linear-gradient(160deg,#172239,#10182a);
   border: 1px solid var(--line);
@@ -78,14 +76,14 @@ footer{margin-top:60px;border-top:1px solid #ffffff12;padding:24px 0 36px;color:
   box-shadow: 0 4px 14px #ff4d8d55; 
 }
 
-/* دکمه پلی سیاه و سفید ساده */
+/* 👇 دکمه پلی */
 .play-btn {
   position: absolute;
   bottom: 25%;
   left: 50%;
   transform: translateX(-50%);
-  width: 52px; 
-  height: 52px;
+  width: 36px; /* دایره ۳۰٪ کوچیک‌تر */
+  height: 36px;
   background: rgba(0, 0, 0, 0.5); 
   border: 2px solid rgba(255, 255, 255, 0.9); 
   border-radius: 50%;
@@ -95,8 +93,9 @@ footer{margin-top:60px;border-top:1px solid #ffffff12;padding:24px 0 36px;color:
   backdrop-filter: blur(2px);
   transition: background .2s, transform .2s;
 }
+/* 👇 فلش سفید (داخل دایره) */
 .play-btn svg {
-  width: 22px;
+  width: 22px; /* سایز فلش */
   height: 22px;
   fill: #fff; 
   margin-right: 3px; 
@@ -116,12 +115,12 @@ footer{margin-top:60px;border-top:1px solid #ffffff12;padding:24px 0 36px;color:
 /* تنظیمات موبایل */
 @media(max-width:600px){
   .reels-row { gap: 10px; } 
-  /* 👇 ۴۸ درصد یعنی ۲ کارت کامل + ۹۰ درصد سومی پیدا میشه */
   .reel-card { flex: 0 0 calc(48% - 5px); padding: 10px; } 
   .reel-card h3 { font-size: 13px; }
   .reel-card p { font-size: 11px; }
   .reel-card .badge { top: 8px; right: 8px; font-size: 9px; }
-  .play-btn { width: 42px; height: 42px; bottom: 20%; }
+  
+  .play-btn { width: 32px; height: 32px; bottom: 20%; }
   .play-btn svg { width: 18px; height: 18px; }
 }
 </style>
@@ -152,7 +151,7 @@ footer{margin-top:60px;border-top:1px solid #ffffff12;padding:24px 0 36px;color:
 </footer>
 
 <script>
-const CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRd5580Rh_4Zmc-rSH5cx5BOIN9MPaNp71lN_09PjV4YLylGpEC1vhBpgtc7y3a5BSsxj-2lO2oDVM1/pub?gid=0&single=true&output=csv';
+const CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRd5580Rh_4Zmc-rSH5cx5BOIN9MPaNp71lN_09PjV4YLylGpEC1vhBpgtc7y3a5BSsxj-2lO2dVM1/pub?gid=0&single=true&output=csv';
 
 async function loadReels() {
   try {
