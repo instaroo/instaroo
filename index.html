@@ -16,9 +16,9 @@ a{color:inherit;text-decoration:none}
 header{border-bottom:1px solid #ffffff12;position:sticky;top:0;background:#0b1020eF;backdrop-filter:blur(16px);z-index:5}
 .nav{height:60px;display:flex;align-items:center;justify-content:space-between;gap:18px}
 
-/* 👇 چیدمان لوگو: متن سفید، سپس قرمز، سپس آیکون */
+/* 👇 چیدمان درست لوگو */
 .logo{display:flex;align-items:center;gap:8px;font-size:40px;font-weight:900;letter-spacing:-2px;line-height:1}
-.logo svg { width: 32px; height: 32px; margin-bottom: 2px; }
+.logo svg { width: 34px; height: 34px; margin-bottom: 4px; }
 .logo span{color:var(--pink)}
 
 .navsmall{color:var(--muted);font-size:13px}
@@ -69,9 +69,7 @@ footer{margin-top:40px;border-top:1px solid #ffffff12;padding:20px 0 30px;color:
 <header>
   <div class="wrap nav">
     <a class="logo" href="#">
-      <!-- 👇 چیدمان جدید: متن سفید، سپس صورتی، سپس آیکون الماس با حرف R -->
-      <span style="color:#fff">INSTA</span>
-      <span>RO</span>
+      <!-- 👇 لوگوی جدید: یک دوربین مینیمال با علامت پلی داخلش (هویت مستقل) -->
       <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <defs>
           <linearGradient id="gradLogo" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -79,11 +77,14 @@ footer{margin-top:40px;border-top:1px solid #ffffff12;padding:20px 0 30px;color:
             <stop offset="100%" stop-color="#ffbd72" />
           </linearGradient>
         </defs>
-        <!-- الماس -->
-        <path d="M12 2L22 12L12 22L2 12L12 2Z" fill="none" stroke="url(#gradLogo)" stroke-width="2" stroke-linejoin="round"/>
-        <!-- حرف R داخل الماس -->
-        <path d="M10 16V8h2.5a2.5 2.5 0 0 1 0 5H10m2 0l1.5 3" stroke="url(#gradLogo)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <!-- مربع گرد (دوربین) -->
+        <rect x="3" y="3" width="18" height="18" rx="5" stroke="url(#gradLogo)" stroke-width="2"/>
+        <!-- علامت پلی داخلش -->
+        <path d="M10 8.5L15 12L10 15.5V8.5Z" fill="url(#gradLogo)"/>
+        <!-- نقطه کوچک بالا -->
+        <circle cx="17" cy="7" r="1.5" fill="url(#gradLogo)"/>
       </svg>
+      <span>INSTA</span><span style="color:#fff">RO</span>
     </a>
     <div class="navsmall">گلچین روزانه اینستاگرام</div>
   </div>
