@@ -29,11 +29,12 @@ footer{margin-top:60px;border-top:1px solid #ffffff12;padding:24px 0 36px;color:
 .row-container { margin-bottom: 30px; }
 .reels-row {
   display: flex;
-  gap: 10px; /* فاصله کم شد */
+  gap: 10px; 
   overflow-x: auto;
   padding-bottom: 15px; 
   scroll-snap-type: x mandatory; 
   -webkit-overflow-scrolling: touch;
+  touch-action: pan-x; /* 👈 این خط باعث میشه توی تلگرام و اینستاگرام صفحه بسته نشه */
 }
 .reels-row::-webkit-scrollbar { height: 6px; }
 .reels-row::-webkit-scrollbar-track { background: transparent; }
@@ -62,7 +63,7 @@ footer{margin-top:60px;border-top:1px solid #ffffff12;padding:24px 0 36px;color:
 
 /* تنظیمات موبایل: ۱ کارت کامل + ۹۰٪ از دومی */
 @media(max-width:600px){
-  .reels-row { gap: 10px; } /* فاصله کم شد */
+  .reels-row { gap: 10px; } 
   .reel-card { flex: 0 0 47vw; padding: 10px; }
   .reel-card h3 { font-size: 13px; }
   .reel-card p { font-size: 11px; }
