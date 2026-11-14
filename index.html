@@ -42,7 +42,7 @@ footer{margin-top:60px;border-top:1px solid #ffffff12;padding:24px 0 36px;color:
 /* کل کارت لینک است */
 .reel-card {
   display: block; 
-  flex: 0 0 calc(25% - 8px);
+  flex: 0 0 calc(25% - 8px); 
   background: linear-gradient(160deg,#172239,#10182a);
   border: 1px solid var(--line);
   border-radius: 18px;
@@ -75,38 +75,40 @@ footer{margin-top:60px;border-top:1px solid #ffffff12;padding:24px 0 36px;color:
   box-shadow: 0 4px 14px #ff4d8d55; 
 }
 
-/* دکمه پلی ساده */
+/* دکمه پلی سیاه و سفید ساده */
 .play-btn {
   position: absolute;
   bottom: 25%;
   left: 50%;
   transform: translateX(-50%);
-  width: 52px; height: 52px;
-  background: rgba(0, 0, 0, 0.4);
-  border: 2px solid rgba(255, 255, 255, 0.8);
+  width: 52px; 
+  height: 52px;
+  background: rgba(0, 0, 0, 0.5); 
+  border: 2px solid rgba(255, 255, 255, 0.9); 
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: white;
+  color: #fff; 
   font-size: 20px;
   padding-left: 4px;
-  backdrop-filter: blur(4px);
+  backdrop-filter: blur(2px);
   transition: background .2s, transform .2s;
 }
 .reel-card:hover .play-btn {
-  background: rgba(255, 77, 141, 0.8);
+  background: var(--pink); 
   transform: translateX(-50%) scale(1.1);
 }
 
 /* متن‌ها */
 .reel-card h3 { font-size: 15px; margin: 6px 0; color: #fff; line-height: 1.8; }
-.reel-card p { font-size: 13px; color: #a0aec0; margin: 4px 0 0 0; line-height: 1.8; }
+/* 👇 اینجا رنگ رو دقیقاً صورتی کردم */
+.reel-card p { font-size: 13px; color: #ff8db4; margin: 4px 0 0 0; line-height: 1.8; }
 
 /* تنظیمات موبایل */
 @media(max-width:600px){
   .reels-row { gap: 10px; } 
-  .reel-card { flex: 0 0 calc(50% - 5px); padding: 10px; }
+  .reel-card { flex: 0 0 calc(50% - 5px); padding: 10px; } 
   .reel-card h3 { font-size: 13px; }
   .reel-card p { font-size: 11px; }
   .reel-card .badge { top: 8px; right: 8px; font-size: 9px; }
