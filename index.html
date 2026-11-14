@@ -17,9 +17,11 @@ header{border-bottom:1px solid #ffffff12;position:sticky;top:0;background:#0b102
 .logo{font-size:52px;font-weight:900;letter-spacing:-2px;line-height:1}.logo span{color:var(--pink)}
 .navsmall{color:var(--muted);font-size:14px}.hero{padding:68px 0 38px;text-align:center}
 .pill{display:inline-flex;gap:8px;align-items:center;border:1px solid #ff4d8d55;color:#ff9abb;background:#ff4d8d12;border-radius:30px;padding:7px 14px;font-size:12px;font-weight:700}
-h1{font-size:clamp(34px,6vw,58px);line-height:1.35;margin:18px 0 10px;font-weight:900;letter-spacing:-1.5px}
+/* 👇 فاصله تیتر کم شد */
+h1{font-size:clamp(34px,6vw,58px);line-height:1.25;margin:12px 0 6px;font-weight:900;letter-spacing:-1.5px}
 .grad{background:linear-gradient(90deg,#ff70a6,#ffbd72);-webkit-background-clip:text;background-clip:text;color:transparent}
-.hero p{color:var(--muted);font-size:22px;margin:0 auto;max-width:580px;line-height:2}
+/* 👇 فاصله و ارتفاع خط جمله زیرش کم شد */
+.hero p{color:var(--muted);font-size:22px;margin:0 auto;max-width:580px;line-height:1.7}
 footer{margin-top:60px;border-top:1px solid #ffffff12;padding:24px 0 36px;color:var(--muted);font-size:12px;text-align:center}
 .note{margin-top:22px;color:#8492aa;font-size:11px;text-align:center;line-height:2}
 @media(max-width:560px){.hero{padding:48px 0 24px}.navsmall{display:none}.logo{font-size:40px}.hero p{font-size:18px}}
@@ -76,7 +78,7 @@ footer{margin-top:60px;border-top:1px solid #ffffff12;padding:24px 0 36px;color:
   box-shadow: 0 4px 14px #ff4d8d55; 
 }
 
-/* 👇 دکمه پلی: دایره کوچیک‌تر */
+/* دکمه پلی */
 .play-btn {
   position: absolute;
   bottom: 25%;
@@ -93,7 +95,6 @@ footer{margin-top:60px;border-top:1px solid #ffffff12;padding:24px 0 36px;color:
   backdrop-filter: blur(2px);
   transition: background .2s, transform .2s;
 }
-/* 👇 فلش سفید بزرگ‌تر */
 .play-btn svg {
   width: 22px; 
   height: 22px;
@@ -151,7 +152,6 @@ footer{margin-top:60px;border-top:1px solid #ffffff12;padding:24px 0 36px;color:
 </footer>
 
 <script>
-// 👇 اینجا لینک رو درست کردم (به M آخر برگشت)
 const CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRd5580Rh_4Zmc-rSH5cx5BOIN9MPaNp71lN_09PjV4YLylGpEC1vhBpgtc7y3a5BSsxj-2lO2oDVM1/pub?gid=0&single=true&output=csv';
 
 async function loadReels() {
