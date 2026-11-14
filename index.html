@@ -25,7 +25,7 @@ footer{margin-top:60px;border-top:1px solid #ffffff12;padding:24px 0 36px;color:
 @media(max-width:800px){.grid{grid-template-columns:repeat(2,1fr)}}@media(max-width:560px){.hero{padding:48px 0 24px}.grid{grid-template-columns:1fr}.navsmall{display:none}.logo{font-size:40px}.hero p{font-size:18px}}
 </style>
 <style>
-/* استایل ردیف‌های افقی */
+/* استایل ردیف‌های افقی (اسکرول‌دار) */
 .row-container { margin-bottom: 30px; position: relative; }
 .reels-row {
   display: flex;
@@ -36,7 +36,11 @@ footer{margin-top:60px;border-top:1px solid #ffffff12;padding:24px 0 36px;color:
   -webkit-overflow-scrolling: touch;
   touch-action: pan-x pan-y; 
   overscroll-behavior-x: contain; 
-  scroll-behavior: smooth; /* برای اینکه دکمه‌ها نرم اسکرول کنن */
+  scroll-behavior: smooth; 
+  
+  /* 👇 این دو خط جدید: حاشیه امن از کناره‌های صفحه */
+  padding-left: 15px; 
+  padding-right: 15px; 
 }
 .reels-row::-webkit-scrollbar { height: 6px; }
 .reels-row::-webkit-scrollbar-track { background: transparent; }
@@ -63,37 +67,14 @@ footer{margin-top:60px;border-top:1px solid #ffffff12;padding:24px 0 36px;color:
 .reel-card a { color: #ff8db4; font-size: 13px; font-weight: 700; display: inline-block; transition: .2s; }
 .reel-card a:hover { color: #ff4d8d; }
 
-/* استایل دکمه‌های اسکرول */
-.scroll-btn {
-  position: absolute;
-  top: 45%;
-  transform: translateY(-50%);
-  width: 40px; height: 40px;
-  background: rgba(11, 16, 32, 0.85);
-  border: 1px solid var(--line);
-  border-radius: 50%;
-  color: white;
-  font-size: 20px;
-  display: flex; align-items: center; justify-content: center;
-  cursor: pointer; z-index: 10;
-  backdrop-filter: blur(4px);
-  box-shadow: 0 4px 10px rgba(0,0,0,0.5);
-  transition: background 0.2s;
-}
-.scroll-btn:hover { background: var(--pink); border-color: var(--pink); }
-.scroll-left { right: -15px; }
-.scroll-right { left: -15px; }
-
+/* تنظیمات موبایل: ۱ کارت کامل + ۹۰٪ از دومی */
 @media(max-width:600px){
-  .reels-row { gap: 10px; } 
+  .reels-row { gap: 10px; padding-left: 20px; padding-right: 20px; } 
   .reel-card { flex: 0 0 47vw; padding: 10px; }
   .reel-card h3 { font-size: 13px; }
   .reel-card p { font-size: 11px; }
   .reel-card .badge { top: 16px; right: 16px; font-size: 9px; }
   .reel-card a { font-size: 11px; }
-  .scroll-btn { width: 32px; height: 32px; font-size: 16px; }
-  .scroll-left { right: 5px; }
-  .scroll-right { left: 5px; }
 }
 </style>
 </head>
@@ -146,13 +127,10 @@ async function loadReels() {
     });
 
     let htmlContent = '';
-    let rowIdCounter = 0;
     for (const [groupName, items] of Object.entries(groupedData)) {
       htmlContent += `
         <div class="row-container">
-          <button class="scroll-btn scroll-right" onclick="document.getElementById('row-${rowIdCounter}').scrollBy({left: -250, behavior: 'smooth'})">&#10095;</button>
-          <button class="scroll-btn scroll-left" onclick="document.getElementById('row-${rowIdCounter}').scrollBy({left: 250, behavior: 'smooth'})">&#10094;</button>
-          <div class="reels-row" id="row-${rowIdCounter}">
+          <div class="reels-row">
             ${items.map(r => `
               <div class="reel-card">
                 ${r.cover ? `<img src="${r.cover}" alt="${r.title}" loading="lazy">` : ''}
@@ -165,7 +143,6 @@ async function loadReels() {
           </div>
         </div>
       `;
-      rowIdCounter++;
     }
 
     document.getElementById('main-content').innerHTML = htmlContent;
