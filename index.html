@@ -71,7 +71,7 @@ footer{margin-top:40px;border-top:1px solid #ffffff12;padding:20px 0 30px;color:
 /* دکمه‌های فلش چپ و راست */
 .scroll-btn {
   position: absolute;
-  top: 55%; /* تنظیم ارتفاع دکمه روی عکس‌ها */
+  top: 55%; 
   transform: translateY(-50%);
   width: 36px; 
   height: 36px;
@@ -93,8 +93,8 @@ footer{margin-top:40px;border-top:1px solid #ffffff12;padding:20px 0 30px;color:
   background: var(--pink); 
   border-color: var(--pink); 
 }
-.scroll-right { right: -12px; } /* دکمه راست */
-.scroll-left { left: -12px; } /* دکمه چپ */
+.scroll-right { right: -12px; } 
+.scroll-left { left: -12px; } 
 
 .reels-row { 
   display: flex; 
@@ -187,7 +187,6 @@ footer{margin-top:40px;border-top:1px solid #ffffff12;padding:20px 0 30px;color:
 </footer>
 
 <script>
-// 👇 لینک گوگل شیت
 const CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRd5580Rh_4Zmc-rSH5cx5BOIN9MPaNp71lN_09PjV4YLylGpEC1vhBpgtc7y3a5BSsxj-2lO2oDVM1/pub?gid=0&single=true&output=csv';
 
 async function loadReels() {
@@ -203,7 +202,6 @@ async function loadReels() {
       return obj;
     });
 
-    // 👇 مرتب‌سازی بر اساس ستون order (از کوچیک به بزرگ)
     data.sort((a, b) => {
       let orderA = parseInt(a.order) || 9999;
       let orderB = parseInt(b.order) || 9999;
@@ -225,9 +223,9 @@ async function loadReels() {
         <div class="row-container">
           <h2 class="group-title">${groupName}</h2>
           
-          <!-- 👇 دکمه‌های فلش -->
-          <button class="scroll-btn scroll-right" onclick="document.getElementById('row-${rowIdCounter}').scrollBy({left: -250, behavior: 'smooth'})">&#10095;</button>
-          <button class="scroll-btn scroll-left" onclick="document.getElementById('row-${rowIdCounter}').scrollBy({left: 250, behavior: 'smooth'})">&#10094;</button>
+          <!-- 👇 دکمه‌های فلش (جهت‌ها اصلاح شد) -->
+          <button class="scroll-btn scroll-right" onclick="document.getElementById('row-${rowIdCounter}').scrollBy({left: 250, behavior: 'smooth'})">&#10095;</button>
+          <button class="scroll-btn scroll-left" onclick="document.getElementById('row-${rowIdCounter}').scrollBy({left: -250, behavior: 'smooth'})">&#10094;</button>
 
           <div class="reels-row" id="row-${rowIdCounter}">
             ${items.map(r => `
