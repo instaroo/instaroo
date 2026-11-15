@@ -93,6 +93,8 @@ footer{margin-top:40px;border-top:1px solid #ffffff12;padding:20px 0 30px;color:
   background: var(--pink); 
   border-color: var(--pink); 
 }
+
+/* اینبار فلش راست دقیقاً سمت راسته و فلش چپ دقیقاً سمت چپ */
 .scroll-right { right: -12px; } 
 .scroll-left { left: -12px; } 
 
@@ -223,7 +225,7 @@ async function loadReels() {
         <div class="row-container">
           <h2 class="group-title">${groupName}</h2>
           
-          <!-- 👇 دکمه‌های فلش (جهت‌ها اصلاح شد) -->
+          <!-- 👇 دکمه‌های فلش با جهت اصلاح‌شده -->
           <button class="scroll-btn scroll-right" onclick="document.getElementById('row-${rowIdCounter}').scrollBy({left: 250, behavior: 'smooth'})">&#10095;</button>
           <button class="scroll-btn scroll-left" onclick="document.getElementById('row-${rowIdCounter}').scrollBy({left: -250, behavior: 'smooth'})">&#10094;</button>
 
