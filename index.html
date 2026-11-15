@@ -90,7 +90,7 @@ footer{margin-top:40px;border-top:1px solid #ffffff12;padding:20px 0 30px;color:
   transition: transform .3s ease, border-color .3s ease, box-shadow .3s ease; 
   scroll-snap-align: start; 
 }
-.reel-card:hover, .reel-card:active { /* 👈 active برای لمس در گوشی */
+.reel-card:hover, .reel-card:active { 
   transform: translateY(-6px); 
   border-color: #ff4d8d; 
   box-shadow: 0 0 25px rgba(255, 77, 141, 0.4); 
@@ -98,7 +98,7 @@ footer{margin-top:40px;border-top:1px solid #ffffff12;padding:20px 0 30px;color:
 
 .thumb-wrapper { position: relative; margin-bottom: 8px; overflow: hidden; border-radius: 10px; }
 .reel-card img { width: 100%; aspect-ratio: 9/16; object-fit: cover; background: #2a2440; display: block; transition: transform 0.5s ease; }
-.reel-card:hover img, .reel-card:active img { /* 👈 active */
+.reel-card:hover img, .reel-card:active img { 
   transform: scale(1.12); 
 }
 
@@ -129,7 +129,7 @@ footer{margin-top:40px;border-top:1px solid #ffffff12;padding:20px 0 30px;color:
   100% { transform: translateX(-50%) scale(1); box-shadow: 0 0 0 0 rgba(255, 77, 141, 0); }
 }
 
-.reel-card:hover .play-btn, .reel-card:active .play-btn { /* 👈 active */
+.reel-card:hover .play-btn, .reel-card:active .play-btn { 
   background: var(--pink); 
   border-color: var(--pink);
   animation: pulse 1.5s infinite; 
@@ -140,6 +140,7 @@ footer{margin-top:40px;border-top:1px solid #ffffff12;padding:20px 0 30px;color:
 .reel-card:hover h3, .reel-card:active h3 { color: #ffb8d6; }
 .reel-card p { font-size: 11px; color: #ff8db4; margin: 2px 0 0 0; line-height: 1.5; }
 
+/* 👇 تنظیمات مخصوص موبایل */
 @media(max-width:600px){
   .reels-row { gap: 8px; padding-bottom: 8px; } 
   .reel-card { flex: 0 0 calc(47% - 5px); padding: 8px; border-radius: 12px; } 
@@ -154,6 +155,11 @@ footer{margin-top:40px;border-top:1px solid #ffffff12;padding:20px 0 30px;color:
   .scroll-btn { width: 30px; height: 30px; font-size: 14px; }
   .scroll-right { right: -5px; }
   .scroll-left { left: -5px; }
+
+  /* 👇 حذف زوم عکس در گوشی */
+  .reel-card:active img {
+    transform: none;
+  }
 }
 </style>
 </head>
