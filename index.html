@@ -45,15 +45,82 @@ footer{margin-top:40px;border-top:1px solid #ffffff12;padding:20px 0 30px;color:
 @media(max-width:560px){.nav{height:52px}.logo{font-size:32px;}.logo svg{width:28px;height:28px;margin-left:6px;margin-top:-2px;}.navsmall{display:none}.hero{padding:18px 0 12px}h1{font-size:30px;margin:8px 0 2px;}.hero p{font-size:15px}}
 </style>
 <style>
-.row-container { margin-bottom: 14px; }
-.group-title { font-size: 18px; font-weight: 800; color: #fff; margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
-.group-title::before { content: ""; display: block; width: 5px; height: 18px; background: linear-gradient(to bottom, #ff4d8d, #ff8b64); border-radius: 4px; }
-.reels-row { display: flex; gap: 10px; overflow-x: auto; padding-bottom: 10px; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; }
+/* استایل کشوی افقی و دکمه‌های فلش */
+.row-container { 
+  margin-bottom: 14px; 
+  position: relative; 
+}
+.group-title { 
+  font-size: 18px; 
+  font-weight: 800; 
+  color: #fff; 
+  margin-bottom: 10px; 
+  display: flex; 
+  align-items: center; 
+  gap: 8px; 
+}
+.group-title::before { 
+  content: ""; 
+  display: block; 
+  width: 5px; 
+  height: 18px; 
+  background: linear-gradient(to bottom, #ff4d8d, #ff8b64); 
+  border-radius: 4px; 
+}
+
+/* دکمه‌های فلش چپ و راست */
+.scroll-btn {
+  position: absolute;
+  top: 55%; /* تنظیم ارتفاع دکمه روی عکس‌ها */
+  transform: translateY(-50%);
+  width: 36px; 
+  height: 36px;
+  background: rgba(11, 16, 32, 0.7);
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  color: white;
+  font-size: 16px;
+  display: flex; 
+  align-items: center; 
+  justify-content: center;
+  cursor: pointer; 
+  z-index: 10;
+  backdrop-filter: blur(4px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+  transition: all 0.2s;
+}
+.scroll-btn:hover { 
+  background: var(--pink); 
+  border-color: var(--pink); 
+}
+.scroll-right { right: -12px; } /* دکمه راست */
+.scroll-left { left: -12px; } /* دکمه چپ */
+
+.reels-row { 
+  display: flex; 
+  gap: 10px; 
+  overflow-x: auto; 
+  padding-bottom: 10px; 
+  scroll-snap-type: x mandatory; 
+  -webkit-overflow-scrolling: touch; 
+  scroll-behavior: smooth;
+}
 .reels-row::-webkit-scrollbar { height: 4px; }
 .reels-row::-webkit-scrollbar-track { background: transparent; }
 .reels-row::-webkit-scrollbar-thumb { background: var(--line); border-radius: 10px; }
 .reels-row::-webkit-scrollbar-thumb:hover { background: var(--pink); }
-.reel-card { display: block; flex: 0 0 calc(24% - 8px); background: linear-gradient(160deg,#172239,#10182a); border: 1px solid var(--line); border-radius: 14px; padding: 10px; position: relative; transition: transform .25s, border-color .25s, box-shadow .25s; scroll-snap-align: start; }
+
+.reel-card { 
+  display: block; 
+  flex: 0 0 calc(24% - 8px); 
+  background: linear-gradient(160deg,#172239,#10182a); 
+  border: 1px solid var(--line); 
+  border-radius: 14px; 
+  padding: 10px; 
+  position: relative; 
+  transition: transform .25s, border-color .25s, box-shadow .25s; 
+  scroll-snap-align: start; 
+}
 .reel-card:hover { transform: translateY(-4px); border-color: #ff4d8d77; box-shadow: 0 14px 40px -12px #ff4d8d33; }
 .thumb-wrapper { position: relative; margin-bottom: 8px; }
 .reel-card img { width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 10px; background: #2a2440; display: block; }
@@ -64,6 +131,7 @@ footer{margin-top:40px;border-top:1px solid #ffffff12;padding:20px 0 30px;color:
 .reel-card:hover .play-btn svg { fill: #fff; }
 .reel-card h3 { font-size: 13px; margin: 4px 0; color: #fff; line-height: 1.6; }
 .reel-card p { font-size: 11px; color: #ff8db4; margin: 2px 0 0 0; line-height: 1.5; }
+
 @media(max-width:600px){
   .reels-row { gap: 8px; padding-bottom: 8px; } 
   .reel-card { flex: 0 0 calc(45% - 5px); padding: 8px; border-radius: 12px; } 
@@ -75,6 +143,9 @@ footer{margin-top:40px;border-top:1px solid #ffffff12;padding:20px 0 30px;color:
   .group-title::before { width: 4px; height: 16px; }
   .play-btn { width: 28px; height: 28px; bottom: 15%; }
   .play-btn svg { width: 16px; height: 16px; }
+  .scroll-btn { width: 30px; height: 30px; font-size: 14px; }
+  .scroll-right { right: -5px; }
+  .scroll-left { left: -5px; }
 }
 </style>
 </head>
@@ -107,18 +178,16 @@ footer{margin-top:40px;border-top:1px solid #ffffff12;padding:20px 0 30px;color:
   </section>
 
   <section id="main-content"></section>
-  
-  <!-- 👇 اون پاراگراف طولانی کاملاً حذف شد -->
 </main>
 <footer>
   <div class="wrap">
-    <!-- 👇 فوتر هم اصلاح شد -->
     <p style="margin: 0 0 8px 0; font-weight: 600; color: #f5f7fb;">INSTAROO © 2026</p>
     <p style="margin: 0; font-size: 11px; opacity: 0.7;">تمامی حقوق مادی و معنوی این سایت متعلق به اینستارو است.</p>
   </div>
 </footer>
 
 <script>
+// 👇 لینک گوگل شیت
 const CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRd5580Rh_4Zmc-rSH5cx5BOIN9MPaNp71lN_09PjV4YLylGpEC1vhBpgtc7y3a5BSsxj-2lO2oDVM1/pub?gid=0&single=true&output=csv';
 
 async function loadReels() {
@@ -134,6 +203,13 @@ async function loadReels() {
       return obj;
     });
 
+    // 👇 مرتب‌سازی بر اساس ستون order (از کوچیک به بزرگ)
+    data.sort((a, b) => {
+      let orderA = parseInt(a.order) || 9999;
+      let orderB = parseInt(b.order) || 9999;
+      return orderA - orderB;
+    });
+
     const groupedData = {};
     data.forEach(item => {
       const grp = item.group || 'سایر';
@@ -142,12 +218,18 @@ async function loadReels() {
     });
 
     let htmlContent = '';
+    let rowIdCounter = 0;
+
     for (const [groupName, items] of Object.entries(groupedData)) {
       htmlContent += `
         <div class="row-container">
           <h2 class="group-title">${groupName}</h2>
           
-          <div class="reels-row">
+          <!-- 👇 دکمه‌های فلش -->
+          <button class="scroll-btn scroll-right" onclick="document.getElementById('row-${rowIdCounter}').scrollBy({left: -250, behavior: 'smooth'})">&#10095;</button>
+          <button class="scroll-btn scroll-left" onclick="document.getElementById('row-${rowIdCounter}').scrollBy({left: 250, behavior: 'smooth'})">&#10094;</button>
+
+          <div class="reels-row" id="row-${rowIdCounter}">
             ${items.map(r => `
               <a href="${r.link}" target="_blank" class="reel-card">
                 <div class="thumb-wrapper">
@@ -168,6 +250,7 @@ async function loadReels() {
           </div>
         </div>
       `;
+      rowIdCounter++;
     }
 
     document.getElementById('main-content').innerHTML = htmlContent;
