@@ -181,11 +181,11 @@ async function loadReels() {
         <div class="row-container">
           <h2 class="group-title">${groupName}</h2>
           
-          <!-- 👇 فلش سمت راست: شکلش به راست، میره سمت راست -->
-          <button class="scroll-btn scroll-right" onclick="document.getElementById('row-${rowIdCounter}').scrollBy({left: 250, behavior: 'smooth'})">&#10095;</button>
+          <!-- 👇 فلش سمت راست (شکلش به راست، میره راست) -->
+          <button class="scroll-btn scroll-right" onclick="document.getElementById('row-${rowIdCounter}').scrollBy({left: 250, behavior: 'smooth'})">&#10094;</button>
           
-          <!-- 👇 فلش سمت چپ: شکلش به چپ، میره سمت چپ -->
-          <button class="scroll-btn scroll-left" onclick="document.getElementById('row-${rowIdCounter}').scrollBy({left: -250, behavior: 'smooth'})">&#10094;</button>
+          <!-- 👇 فلش سمت چپ (شکلش به چپ، میره چپ) -->
+          <button class="scroll-btn scroll-left" onclick="document.getElementById('row-${rowIdCounter}').scrollBy({left: -250, behavior: 'smooth'})">&#10095;</button>
 
           <div class="reels-row" id="row-${rowIdCounter}">
             ${items.map(r => `
