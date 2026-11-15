@@ -46,83 +46,40 @@ footer{margin-top:40px;border-top:1px solid #ffffff12;padding:20px 0 30px;color:
 </style>
 <style>
 /* استایل کشوی افقی و دکمه‌های فلش */
-.row-container { 
-  margin-bottom: 14px; 
-  position: relative; 
-}
-.group-title { 
-  font-size: 18px; 
-  font-weight: 800; 
-  color: #fff; 
-  margin-bottom: 10px; 
-  display: flex; 
-  align-items: center; 
-  gap: 8px; 
-}
-.group-title::before { 
-  content: ""; 
-  display: block; 
-  width: 5px; 
-  height: 18px; 
-  background: linear-gradient(to bottom, #ff4d8d, #ff8b64); 
-  border-radius: 4px; 
-}
+.row-container { margin-bottom: 14px; position: relative; }
+.group-title { font-size: 18px; font-weight: 800; color: #fff; margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
+.group-title::before { content: ""; display: block; width: 5px; height: 18px; background: linear-gradient(to bottom, #ff4d8d, #ff8b64); border-radius: 4px; }
 
 /* دکمه‌های فلش چپ و راست */
 .scroll-btn {
   position: absolute;
   top: 55%; 
   transform: translateY(-50%);
-  width: 36px; 
-  height: 36px;
+  width: 36px; height: 36px;
   background: rgba(11, 16, 32, 0.7);
   border: 1px solid var(--line);
   border-radius: 50%;
   color: white;
   font-size: 16px;
-  display: flex; 
-  align-items: center; 
-  justify-content: center;
-  cursor: pointer; 
-  z-index: 10;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; z-index: 10;
   backdrop-filter: blur(4px);
   box-shadow: 0 4px 10px rgba(0,0,0,0.5);
   transition: all 0.2s;
 }
-.scroll-btn:hover { 
-  background: var(--pink); 
-  border-color: var(--pink); 
-}
+.scroll-btn:hover { background: var(--pink); border-color: var(--pink); }
 
-/* اینبار فلش راست دقیقاً سمت راسته و فلش چپ دقیقاً سمت چپ */
+/* جایگیری دکمه‌ها */
 .scroll-right { right: -12px; } 
 .scroll-left { left: -12px; } 
 
-.reels-row { 
-  display: flex; 
-  gap: 10px; 
-  overflow-x: auto; 
-  padding-bottom: 10px; 
-  scroll-snap-type: x mandatory; 
-  -webkit-overflow-scrolling: touch; 
-  scroll-behavior: smooth;
-}
+.reels-row { display: flex; gap: 10px; overflow-x: auto; padding-bottom: 10px; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; scroll-behavior: smooth; }
 .reels-row::-webkit-scrollbar { height: 4px; }
 .reels-row::-webkit-scrollbar-track { background: transparent; }
 .reels-row::-webkit-scrollbar-thumb { background: var(--line); border-radius: 10px; }
 .reels-row::-webkit-scrollbar-thumb:hover { background: var(--pink); }
 
-.reel-card { 
-  display: block; 
-  flex: 0 0 calc(24% - 8px); 
-  background: linear-gradient(160deg,#172239,#10182a); 
-  border: 1px solid var(--line); 
-  border-radius: 14px; 
-  padding: 10px; 
-  position: relative; 
-  transition: transform .25s, border-color .25s, box-shadow .25s; 
-  scroll-snap-align: start; 
-}
+.reel-card { display: block; flex: 0 0 calc(24% - 8px); background: linear-gradient(160deg,#172239,#10182a); border: 1px solid var(--line); border-radius: 14px; padding: 10px; position: relative; transition: transform .25s, border-color .25s, box-shadow .25s; scroll-snap-align: start; }
 .reel-card:hover { transform: translateY(-4px); border-color: #ff4d8d77; box-shadow: 0 14px 40px -12px #ff4d8d33; }
 .thumb-wrapper { position: relative; margin-bottom: 8px; }
 .reel-card img { width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 10px; background: #2a2440; display: block; }
@@ -156,7 +113,6 @@ footer{margin-top:40px;border-top:1px solid #ffffff12;padding:20px 0 30px;color:
   <div class="wrap nav">
     <a class="logo" href="#">
       <span>INSTA</span><span class="pink">ROO</span>
-      
       <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <defs>
           <linearGradient id="gradLogo" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -225,9 +181,11 @@ async function loadReels() {
         <div class="row-container">
           <h2 class="group-title">${groupName}</h2>
           
-          <!-- 👇 دکمه‌های فلش با جهت اصلاح‌شده -->
-          <button class="scroll-btn scroll-right" onclick="document.getElementById('row-${rowIdCounter}').scrollBy({left: 250, behavior: 'smooth'})">&#10095;</button>
+          <!-- 👇 دکمه چپ (فلش به چپ، اسکرول به چپ) -->
           <button class="scroll-btn scroll-left" onclick="document.getElementById('row-${rowIdCounter}').scrollBy({left: -250, behavior: 'smooth'})">&#10094;</button>
+          
+          <!-- 👇 دکمه راست (فلش به راست، اسکرول به راست) -->
+          <button class="scroll-btn scroll-right" onclick="document.getElementById('row-${rowIdCounter}').scrollBy({left: 250, behavior: 'smooth'})">&#10095;</button>
 
           <div class="reels-row" id="row-${rowIdCounter}">
             ${items.map(r => `
