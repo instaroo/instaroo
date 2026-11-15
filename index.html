@@ -69,7 +69,7 @@ footer{margin-top:40px;border-top:1px solid #ffffff12;padding:20px 0 30px;color:
 }
 .scroll-btn:hover { background: var(--pink); border-color: var(--pink); }
 
-/* جایگیری فیزیکی دکمه‌ها */
+/* جایگیری دکمه‌ها در دو طرف */
 .scroll-right { right: -12px; } 
 .scroll-left { left: -12px; } 
 
@@ -181,11 +181,11 @@ async function loadReels() {
         <div class="row-container">
           <h2 class="group-title">${groupName}</h2>
           
-          <!-- 👇 دکمه سمت چپ: ظاهرش فلش به چپ، عملکردش اسکرول به چپ (جلو) -->
-          <button class="scroll-btn scroll-left" onclick="document.getElementById('row-${rowIdCounter}').scrollBy({left: 250, behavior: 'smooth'})">&#10094;</button>
+          <!-- 👇 فلش سمت راست: شکلش به راست، میره سمت راست -->
+          <button class="scroll-btn scroll-right" onclick="document.getElementById('row-${rowIdCounter}').scrollBy({left: 250, behavior: 'smooth'})">&#10095;</button>
           
-          <!-- 👇 دکمه سمت راست: ظاهرش فلش به راست، عملکردش اسکرول به راست (عقب) -->
-          <button class="scroll-btn scroll-right" onclick="document.getElementById('row-${rowIdCounter}').scrollBy({left: -250, behavior: 'smooth'})">&#10095;</button>
+          <!-- 👇 فلش سمت چپ: شکلش به چپ، میره سمت چپ -->
+          <button class="scroll-btn scroll-left" onclick="document.getElementById('row-${rowIdCounter}').scrollBy({left: -250, behavior: 'smooth'})">&#10094;</button>
 
           <div class="reels-row" id="row-${rowIdCounter}">
             ${items.map(r => `
