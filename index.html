@@ -79,7 +79,8 @@ footer{margin-top:40px;border-top:1px solid #ffffff12;padding:20px 0 30px;color:
 .reels-row::-webkit-scrollbar-thumb { background: var(--line); border-radius: 10px; }
 .reels-row::-webkit-scrollbar-thumb:hover { background: var(--pink); }
 
-.reel-card { display: block; flex: 0 0 calc(24% - 8px); background: linear-gradient(160deg,#172239,#10182a); border: 1px solid var(--line); border-radius: 14px; padding: 10px; position: relative; transition: transform .25s, border-color .25s, box-shadow .25s; scroll-snap-align: start; }
+/* 👇 اینجا عرض کارت‌های دسکتاپ رو تغییر دادم (۳۸ درصد) تا ۲ تا کارت کامل و یکم از سومی پیدا باشه */
+.reel-card { display: block; flex: 0 0 calc(38% - 8px); background: linear-gradient(160deg,#172239,#10182a); border: 1px solid var(--line); border-radius: 14px; padding: 10px; position: relative; transition: transform .25s, border-color .25s, box-shadow .25s; scroll-snap-align: start; }
 .reel-card:hover { transform: translateY(-4px); border-color: #ff4d8d77; box-shadow: 0 14px 40px -12px #ff4d8d33; }
 .thumb-wrapper { position: relative; margin-bottom: 8px; }
 .reel-card img { width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 10px; background: #2a2440; display: block; }
@@ -93,7 +94,8 @@ footer{margin-top:40px;border-top:1px solid #ffffff12;padding:20px 0 30px;color:
 
 @media(max-width:600px){
   .reels-row { gap: 8px; padding-bottom: 8px; } 
-  .reel-card { flex: 0 0 calc(45% - 5px); padding: 8px; border-radius: 12px; } 
+  /* 👇 اینجا عرض کارت‌های گوشی رو تغییر دادم (۴۷ درصد به جای ۴۵) تا ۲ تا کارت کامل باشه و یکم کمتر از سومی پیدا باشه */
+  .reel-card { flex: 0 0 calc(47% - 5px); padding: 8px; border-radius: 12px; } 
   .reel-card h3 { font-size: 12px; }
   .reel-card p { font-size: 10px; }
   .reel-card .badge { top: 6px; right: 6px; font-size: 8px; padding: 2px 6px; }
