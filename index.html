@@ -50,7 +50,6 @@ footer{margin-top:40px;border-top:1px solid #ffffff12;padding:20px 0 30px;color:
 .group-title { font-size: 18px; font-weight: 800; color: #fff; margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
 .group-title::before { content: ""; display: block; width: 5px; height: 18px; background: linear-gradient(to bottom, #ff4d8d, #ff8b64); border-radius: 4px; }
 
-/* دکمه‌های فلش چپ و راست */
 .scroll-btn {
   position: absolute;
   top: 55%; 
@@ -69,7 +68,6 @@ footer{margin-top:40px;border-top:1px solid #ffffff12;padding:20px 0 30px;color:
 }
 .scroll-btn:hover { background: var(--pink); border-color: var(--pink); }
 
-/* جایگیری دکمه‌ها در دو طرف */
 .scroll-right { right: -12px; } 
 .scroll-left { left: -12px; } 
 
@@ -79,7 +77,7 @@ footer{margin-top:40px;border-top:1px solid #ffffff12;padding:20px 0 30px;color:
 .reels-row::-webkit-scrollbar-thumb { background: var(--line); border-radius: 10px; }
 .reels-row::-webkit-scrollbar-thumb:hover { background: var(--pink); }
 
-/* 👇 کارت‌ها با افکت زوم و درخشش */
+/* 👇 کارت‌ها */
 .reel-card { 
   display: block; 
   flex: 0 0 calc(32% - 8px); 
@@ -92,34 +90,20 @@ footer{margin-top:40px;border-top:1px solid #ffffff12;padding:20px 0 30px;color:
   transition: transform .3s ease, border-color .3s ease, box-shadow .3s ease; 
   scroll-snap-align: start; 
 }
-.reel-card:hover { 
-  transform: translateY(-6px); /* کمی بیشتر بالا میاد */
+.reel-card:hover, .reel-card:active { /* 👈 active برای لمس در گوشی */
+  transform: translateY(-6px); 
   border-color: #ff4d8d; 
-  box-shadow: 0 0 25px rgba(255, 77, 141, 0.4); /* هاله صورتی */
+  box-shadow: 0 0 25px rgba(255, 77, 141, 0.4); 
 }
 
-/* 👇 باکس عکس */
-.thumb-wrapper { 
-  position: relative; 
-  margin-bottom: 8px; 
-  overflow: hidden; 
-  border-radius: 10px;
-}
-.reel-card img { 
-  width: 100%; 
-  aspect-ratio: 9/16; 
-  object-fit: cover; 
-  background: #2a2440; 
-  display: block; 
-  transition: transform 0.5s ease; 
-}
-.reel-card:hover img { 
-  transform: scale(1.12); /* زوم ۱۲ درصدی */
+.thumb-wrapper { position: relative; margin-bottom: 8px; overflow: hidden; border-radius: 10px; }
+.reel-card img { width: 100%; aspect-ratio: 9/16; object-fit: cover; background: #2a2440; display: block; transition: transform 0.5s ease; }
+.reel-card:hover img, .reel-card:active img { /* 👈 active */
+  transform: scale(1.12); 
 }
 
 .reel-card .badge { position: absolute; top: 8px; right: 8px; background: linear-gradient(135deg,#ff4d8d,#ff8b64); color: #fff; font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 20px; z-index: 2; box-shadow: 0 4px 14px #ff4d8d55; }
 
-/* 👇 دکمه پلی با انیمیشن ضربان */
 .play-btn { 
   position: absolute; 
   bottom: 25%; 
@@ -139,24 +123,21 @@ footer{margin-top:40px;border-top:1px solid #ffffff12;padding:20px 0 30px;color:
 }
 .play-btn svg { width: 18px; height: 18px; fill: #fff; margin-right: 2px; transition: fill .2s; }
 
-/* انیمیشن ضربان قلب (Pulse) */
 @keyframes pulse {
   0% { transform: translateX(-50%) scale(1); box-shadow: 0 0 0 0 rgba(255, 77, 141, 0.7); }
   50% { transform: translateX(-50%) scale(1.08); box-shadow: 0 0 0 10px rgba(255, 77, 141, 0); }
   100% { transform: translateX(-50%) scale(1); box-shadow: 0 0 0 0 rgba(255, 77, 141, 0); }
 }
 
-.reel-card:hover .play-btn { 
+.reel-card:hover .play-btn, .reel-card:active .play-btn { /* 👈 active */
   background: var(--pink); 
   border-color: var(--pink);
-  animation: pulse 1.5s infinite; /* شروع ضربان موقع هاور */
+  animation: pulse 1.5s infinite; 
 }
-.reel-card:hover .play-btn svg { 
-  fill: #fff; 
-}
+.reel-card:hover .play-btn svg, .reel-card:active .play-btn svg { fill: #fff; }
 
 .reel-card h3 { font-size: 13px; margin: 4px 0; color: #fff; line-height: 1.6; transition: color .2s; }
-.reel-card:hover h3 { color: #ffb8d6; } /* تیتر هم موقع هاور صورتی روشن میشه */
+.reel-card:hover h3, .reel-card:active h3 { color: #ffb8d6; }
 .reel-card p { font-size: 11px; color: #ff8db4; margin: 2px 0 0 0; line-height: 1.5; }
 
 @media(max-width:600px){
