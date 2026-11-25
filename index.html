@@ -39,7 +39,6 @@ header{border-bottom:1px solid #ffffff12;position:sticky;top:0;background:#0b102
 .navright{display:flex;align-items:center;gap:15px;}
 .navsmall{color:var(--muted);font-size:13px}
 
-/* 👇 دکمه تغییر زبان */
 .lang-btn {
   background: var(--panel); border: 1px solid var(--line); border-radius: 20px;
   padding: 5px 12px; color: #fff; font-family: Vazirmatn; font-size: 12px; cursor: pointer;
@@ -213,7 +212,6 @@ let currentLang = 'fa'; // زبان پیش‌فرض
 function toggleLang() {
   currentLang = currentLang === 'fa' ? 'en' : 'fa';
   
-  // تغییر جهت صفحه
   const htmlRoot = document.getElementById('html-root');
   if (currentLang === 'en') {
     htmlRoot.setAttribute('dir', 'ltr');
@@ -225,12 +223,12 @@ function toggleLang() {
     document.getElementById('lang-btn').innerText = 'English';
   }
 
-  // تغییر تمام متن‌های دارای data-fa و data-en
+  // تغییر تمام متن‌های ثابت
   document.querySelectorAll('[data-fa]').forEach(el => {
     el.innerText = el.getAttribute(`data-${currentLang}`);
   });
 
-  // رفرش کردن ردیف‌ها برای اعمال زبان جدید روی تیتر گروه‌ها
+  // رفرش کردن ردیف‌ها
   loadReels();
 }
 
@@ -266,15 +264,8 @@ async function loadReels() {
     let rowIdCounter = 0;
 
     for (const [groupName, items] of Object.entries(groupedData)) {
-      // ترجمه اسم گروه‌ها برای حالت انگلیسی
-      let displayGroupName = groupName;
-      if (currentLang === 'en') {
-        if (groupName === 'فان') displayGroupName = 'Fun';
-        else if (groupName === 'جنجالی') displayGroupName = 'Controversial';
-        else if (groupName === 'وایرال') displayGroupName = 'Viral';
-        else if (groupName === 'فندق') displayGroupName = 'Cute';
-        else if (groupName === 'داغ‌ترین‌های امروز') displayGroupName = 'Hottest Today';
-      }
+      // 👇 اینجا تیتر گروه رو دقیقاً همونی که تو گوگل شیت نوشتی نشون میده
+      let displayGroupName = groupName; 
 
       htmlContent += `
         <div class="row-container">
@@ -311,11 +302,10 @@ async function loadReels() {
 
   } catch (e) {
     console.error(e);
-    document.getElementById('main-content').innerHTML = '<p style="text-align:center;color:red;">Error loading content / خطا در بارگذاری محتوا.</p>';
+    document.getElementById('main-content').innerHTML = '<p style="text-align:center;color:red;">Error loading content.</p>';
   }
 }
 
-// لود اولیه سایت
 loadReels();
 </script>
 </body>
