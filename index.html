@@ -264,8 +264,15 @@ async function loadReels() {
     let rowIdCounter = 0;
 
     for (const [groupName, items] of Object.entries(groupedData)) {
-      // 👇 اینجا تیتر گروه رو دقیقاً همونی که تو گوگل شیت نوشتی نشون میده
-      let displayGroupName = groupName; 
+      // 👇 انتخاب اسم گروه بر اساس زبان
+      let displayGroupName = groupName; // پیش‌فرض همون فارسی
+      
+      if (currentLang === 'en') {
+        // اگه زبان انگلیسی بود و ستون group_en پر بود، از اون استفاده کن
+        if (items[0] && items[0].group_en && items[0].group_en.trim() !== '') {
+          displayGroupName = items[0].group_en;
+        }
+      }
 
       htmlContent += `
         <div class="row-container">
